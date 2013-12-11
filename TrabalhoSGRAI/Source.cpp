@@ -307,7 +307,7 @@ void displayNavigateSubwindow()
 		glRotatef(GRAUS(modelo.objecto.dir),0,1,0);
 		glRotatef(-90,1,0,0);
 		glScalef(SCALE_HOMER,SCALE_HOMER,SCALE_HOMER);
-		mdlviewer_display(modelo.homer[JANELA_NAVIGATE]);
+		mdlviewer_display(modelo.stdModel[JANELA_NAVIGATE]);
 		glPopMatrix();
 	}
 
@@ -342,7 +342,7 @@ void displayTopSubwindow()
 	glRotatef(GRAUS(modelo.objecto.dir),0,1,0);
 	glRotatef(-90,1,0,0);
 	glScalef(SCALE_HOMER,SCALE_HOMER,SCALE_HOMER);
-	mdlviewer_display(modelo.homer[JANELA_TOP]);
+	mdlviewer_display(modelo.stdModel[JANELA_TOP]);
 	glPopMatrix();
 
 	desenhaAngVisao(&estado.camera);
@@ -372,7 +372,6 @@ void displayMainWindow()
 void Timer(int value)
 {
 	GLfloat nx=0,nz=0;
-	GLboolean andar=GL_FALSE;
 
 	GLuint curr = glutGet(GLUT_ELAPSED_TIME);
 	// calcula velocidade baseado no tempo passado
@@ -381,29 +380,55 @@ void Timer(int value)
 	glutTimerFunc(estado.timer, Timer, 0);
 	modelo.prev = curr;
 
+	if(estado.teclas.z){
+		modelo.correr=GL_TRUE;
+		modelo.andar=GL_FALSE;
+	}
+	else{
+		modelo.correr=GL_FALSE;
+		modelo.andar=GL_TRUE;
+	}
+
+	if(!estado.teclas.up && !estado.teclas.down)
+		modelo.andar=GL_FALSE;
 
 	if(estado.teclas.up){
 		// calcula nova posição nx,nz
+		nx=modelo.objecto.pos.x+cos(modelo.objecto.dir)*velocidade;
+		nz=modelo.objecto.pos.z-sin(modelo.objecto.dir)*velocidade;
+
 		if(!detectaColisao(nx,nz)){
-			//			modelo.objecto.pos.x=nx;
-			//			modelo.objecto.pos.z=nz;
+			modelo.objecto.pos.x=nx;
+			modelo.objecto.pos.z=nz;
 		}
-		andar=GL_TRUE;
 	}
+
 	if(estado.teclas.down){
 		// calcula nova posição nx,nz
+		nx=modelo.objecto.pos.x-cos(modelo.objecto.dir)*velocidade;
+		nz=modelo.objecto.pos.z+sin(modelo.objecto.dir)*velocidade;
+
 		if(!detectaColisao(nx,nz)){
-			//			modelo.objecto.pos.x=nx;
-			//			modelo.objecto.pos.z=nz;
+			modelo.objecto.pos.x=nx;
+			modelo.objecto.pos.z=nz;
 		}
-		andar=GL_TRUE;
 	}
+
 	if(estado.teclas.left){
 		// rodar camara e objecto
 	}
 	if(estado.teclas.right){
 		// rodar camara e objecto
 	}
+
+	if(modelo.andar && modelo.stdModel[JANELA_NAVIGATE].GetSequence()!=4)
+		modelo.stdModel[JANELA_NAVIGATE].SetSequence(4);
+
+	if(!modelo.andar && !modelo.correr && modelo.stdModel[JANELA_NAVIGATE].GetSequence()!=0)
+		modelo.stdModel[JANELA_NAVIGATE].SetSequence(0);
+
+	if(modelo.correr && modelo.stdModel[JANELA_NAVIGATE].GetSequence()!=3)
+		modelo.stdModel[JANELA_NAVIGATE].SetSequence(3);
 
 	// Sequencias - 0(parado) 3(andar) 20(choque)
 	//  modelo.homer[JANELA_NAVIGATE].GetSequence()  le Sequencia usada pelo homer
@@ -438,7 +463,11 @@ void imprime_ajuda(void)
 
 void Key(unsigned char key, int x, int y)
 {
+
 	switch (key) {
+	case 'z':
+	case 'Z': estado.teclas.z=GL_TRUE;
+		break;
 	case 27:
 		exit(1);
 		break;
@@ -469,11 +498,21 @@ void Key(unsigned char key, int x, int y)
 		glDisable(GL_TEXTURE_2D);
 		break;
 	}
-
 }
+
+void KeyUp(unsigned char key, int x, int y)
+{
+	switch (key) {
+	case 'z':
+	case 'Z': estado.teclas.z=GL_FALSE;
+		break;
+	}
+}
+
 void SpecialKey(int key, int x, int y)
 {
 	switch (key) {
+
 	case GLUT_KEY_UP: estado.teclas.up =GL_TRUE;
 		break;
 	case GLUT_KEY_DOWN: estado.teclas.down =GL_TRUE;
@@ -690,6 +729,7 @@ int main(int argc, char **argv)
 
 	glutTimerFunc(estado.timer,Timer,0);
 	glutKeyboardFunc(Key);
+	glutKeyboardUpFunc(KeyUp);
 	glutSpecialFunc(SpecialKey);
 	glutSpecialUpFunc(SpecialKeyUp);
 
@@ -701,7 +741,7 @@ int main(int argc, char **argv)
 	createTextures(modelo.texID[JANELA_TOP]);
 	createDisplayLists(JANELA_TOP);
 
-	mdlviewer_init("homer.mdl", modelo.homer[JANELA_TOP] );
+	mdlviewer_init("gordon.mdl", modelo.stdModel[JANELA_TOP] );
 
 	glutReshapeFunc(redisplayTopSubwindow);
 	glutDisplayFunc(displayTopSubwindow);
@@ -720,7 +760,7 @@ int main(int argc, char **argv)
 
 	createTextures(modelo.texID[JANELA_NAVIGATE]);
 	createDisplayLists(JANELA_NAVIGATE);
-	mdlviewer_init( "homer.mdl", modelo.homer[JANELA_NAVIGATE] );
+	mdlviewer_init( "gordon.mdl", modelo.stdModel[JANELA_NAVIGATE] );
 
 	glutReshapeFunc(reshapeNavigateSubwindow);
 	glutDisplayFunc(displayNavigateSubwindow);

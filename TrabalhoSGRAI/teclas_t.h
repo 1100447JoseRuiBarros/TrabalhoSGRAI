@@ -9,5 +9,5 @@
 class teclas_t
 {
 public:
-	GLboolean   up,down,left,right;
+	GLboolean   up,down,left,right,z,x;
 };

@@ -9,14 +9,17 @@
 #include "studio.h"
 #include "mdlviewer.h"
 
-typedef struct MODELO{
+class MODELO{
+
+public:
 	GLuint        texID[NUM_JANELAS][NUM_TEXTURAS];
 	GLuint        labirinto[NUM_JANELAS];
 	GLuint        chao[NUM_JANELAS];
 	objecto_t	  objecto;
 	GLuint        xMouse;
 	GLuint        yMouse;
-	StudioModel   homer[NUM_JANELAS];   // Modelo Homer
+	StudioModel   stdModel[NUM_JANELAS];   // Modelo
 	GLboolean     andar;
+	GLboolean	  correr;
 	GLuint        prev;
 };
