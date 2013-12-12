@@ -372,47 +372,69 @@ void displayMainWindow()
 void Timer(int value)
 {
 	GLfloat nx=0,nz=0;
+	float velocidade;
+
+	if(estado.teclas.z &&( modelo.andarFrente || modelo.andarTras))
+		modelo.correr=GL_TRUE;
+	else
+		modelo.correr=GL_FALSE;
+
+	if(!estado.teclas.up && !estado.teclas.down){
+		modelo.andarFrente=GL_FALSE;
+		modelo.andarTras=GL_FALSE;
+		modelo.correr=GL_FALSE;
+	}
 
 	GLuint curr = glutGet(GLUT_ELAPSED_TIME);
 	// calcula velocidade baseado no tempo passado
-	float velocidade= modelo.objecto.vel*(curr - modelo.prev )*0.001;
+
+	if(!modelo.correr)
+		velocidade= modelo.objecto.vel*(curr - modelo.prev )*0.001;
+	else
+		velocidade= modelo.objecto.vel*(curr - modelo.prev )*0.001*2;
+
 
 	glutTimerFunc(estado.timer, Timer, 0);
 	modelo.prev = curr;
 
-	if(estado.teclas.z){
-		modelo.correr=GL_TRUE;
-		modelo.andar=GL_FALSE;
-	}
-	else{
-		modelo.correr=GL_FALSE;
-		modelo.andar=GL_TRUE;
-	}
-
-	if(!estado.teclas.up && !estado.teclas.down)
-		modelo.andar=GL_FALSE;
 
 	if(estado.teclas.up){
+		//Roda Objecto
+		if(!modelo.andarFrente){
+			modelo.objecto.dir+=10;
+			modelo.andarTras=GL_FALSE;
+		}
 		// calcula nova posição nx,nz
-		nx=modelo.objecto.pos.x+cos(modelo.objecto.dir)*velocidade;
-		nz=modelo.objecto.pos.z-sin(modelo.objecto.dir)*velocidade;
+		nx=modelo.objecto.pos.x+velocidade*cos(modelo.objecto.dir);
+		//nz=modelo.objecto.pos.z-velocidade*sin(modelo.objecto.dir);
 
 		if(!detectaColisao(nx,nz)){
+
 			modelo.objecto.pos.x=nx;
-			modelo.objecto.pos.z=nz;
+			//modelo.objecto.pos.z=nz;
+			modelo.andarFrente=GL_TRUE;
 		}
 	}
 
 	if(estado.teclas.down){
+		//roda o objecto
+
+		if(!modelo.andarTras){
+			modelo.objecto.dir+=10;
+			modelo.andarFrente=GL_FALSE;
+		}
 		// calcula nova posição nx,nz
-		nx=modelo.objecto.pos.x-cos(modelo.objecto.dir)*velocidade;
-		nz=modelo.objecto.pos.z+sin(modelo.objecto.dir)*velocidade;
+		nx=modelo.objecto.pos.x+velocidade*cos(modelo.objecto.dir);
+		//nz=modelo.objecto.pos.z-velocidade*sin(modelo.objecto.dir);
 
 		if(!detectaColisao(nx,nz)){
+
 			modelo.objecto.pos.x=nx;
-			modelo.objecto.pos.z=nz;
+			//dmodelo.objecto.pos.z=nz;
+			modelo.andarTras=GL_TRUE;
 		}
 	}
+
 
 	if(estado.teclas.left){
 		// rodar camara e objecto
@@ -421,10 +443,10 @@ void Timer(int value)
 		// rodar camara e objecto
 	}
 
-	if(modelo.andar && modelo.stdModel[JANELA_NAVIGATE].GetSequence()!=4)
+	if((modelo.andarFrente||modelo.andarTras) && !modelo.correr && modelo.stdModel[JANELA_NAVIGATE].GetSequence()!=4)
 		modelo.stdModel[JANELA_NAVIGATE].SetSequence(4);
 
-	if(!modelo.andar && !modelo.correr && modelo.stdModel[JANELA_NAVIGATE].GetSequence()!=0)
+	if(!modelo.andarFrente && !modelo.andarTras && !modelo.correr && modelo.stdModel[JANELA_NAVIGATE].GetSequence()!=0)
 		modelo.stdModel[JANELA_NAVIGATE].SetSequence(0);
 
 	if(modelo.correr && modelo.stdModel[JANELA_NAVIGATE].GetSequence()!=3)
@@ -505,6 +527,7 @@ void KeyUp(unsigned char key, int x, int y)
 	switch (key) {
 	case 'z':
 	case 'Z': estado.teclas.z=GL_FALSE;
+		printf("A tecla z foi desprimida");
 		break;
 	}
 }
@@ -692,7 +715,7 @@ void init()
 	modelo.objecto.vel=OBJECTO_VELOCIDADE;
 
 	modelo.xMouse=modelo.yMouse=-1;
-	modelo.andar=GL_FALSE;
+	//modelo.andar=GL_FALSE;
 
 	glEnable(GL_DEPTH_TEST);
 	glShadeModel(GL_SMOOTH);
