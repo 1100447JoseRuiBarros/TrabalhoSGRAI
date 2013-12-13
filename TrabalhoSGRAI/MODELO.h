@@ -18,7 +18,7 @@ public:
 	GLuint        yMouse;
 	StudioModel   stdModel[NUM_JANELAS];   // Modelo
 	GLboolean     andarFrente;
-	GLboolean     andarTras;
+	GLboolean     andar;
 	GLboolean	  correr;
 	GLuint        prev;
 };
