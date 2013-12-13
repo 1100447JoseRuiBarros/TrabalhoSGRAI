@@ -1,8 +1,7 @@
+#pragma once
 #include <stdio.h>
-#include <string.h>
 #include <stdlib.h>
-#include <math.h>
-#include <time.h>
+
 
 #ifdef __APPLE__
 #include <GLUT/glut.h>
@@ -14,112 +13,18 @@
 #include "GL/glaux.h"
 #endif
 
-#include "teclas_t.h"
-#include "pos_t.h"
-#include "mathlib.h"
-#include "studio.h"
-#include "mdlviewer.h"
-#include "ESTADO.h"
-#include "MODELO.h"
+
+#include "defines.h"
+#include "Globals.h"
+#include "Key.h"
+#include "Window.h"
+#include "Illumination.h"
 
 #pragma comment (lib, "glaux.lib")    /* link with Win32 GLAUX lib usada para ler bitmaps */
 
 // fun‹o para ler jpegs do ficheiro readjpeg.c
 extern "C" int read_JPEG_file(const char *, char **, int *, int *, int *);
 
-/////////////////////////////////////
-//variaveis globais
-
-ESTADO estado;
-MODELO modelo;
-
-
-////////////////////////////////////
-/// Iluminação e materiais
-
-void setLight()
-{	
-	GLfloat light_pos[4] =	{-5.0, 20.0, -8.0, 0.0};
-	GLfloat light_ambient[] = { 0.2f, 0.2f, 0.2f, 1.0f };
-	GLfloat light_diffuse[] = { 0.8f, 0.8f, 0.8f, 1.0f };
-	GLfloat light_specular[]=	{ 0.5f, 0.5f, 0.5f, 1.0f };
-
-	// ligar iluminação
-	glEnable(GL_LIGHTING);
-
-	// ligar e definir fonte de luz 0
-	glEnable(GL_LIGHT0);
-	glLightfv(GL_LIGHT0, GL_AMBIENT, light_ambient);
-	glLightfv(GL_LIGHT0, GL_DIFFUSE, light_diffuse);
-	glLightfv(GL_LIGHT0, GL_SPECULAR, light_specular);
-	glLightfv(GL_LIGHT0, GL_POSITION, light_pos);
-
-	glLightModeli(GL_LIGHT_MODEL_LOCAL_VIEWER,estado.localViewer);
-}
-
-void setMaterial()
-{
-	GLfloat mat_specular[]= { 0.8f, 0.8f, 0.8f, 1.0f };
-	GLfloat mat_shininess = 104;
-
-	// criação automática das componentes Ambiente e Difusa do material a partir das cores
-	glEnable(GL_COLOR_MATERIAL);
-	glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);
-
-	// definir de outros parâmetros dos materiais estáticamente
-	glMaterialfv(GL_FRONT, GL_SPECULAR, mat_specular);
-	glMaterialf(GL_FRONT, GL_SHININESS, mat_shininess); 
-}
-
-
-///////////////////////////////////
-//// Redisplays
-
-void redisplayTopSubwindow(int width, int height)
-{
-	// glViewport(botom, left, width, height)
-	// define parte da janela a ser utilizada pelo OpenGL
-	glViewport(0, 0, (GLint) width, (GLint) height);
-	// Matriz Projeccao
-	// Matriz onde se define como o mundo e apresentado na janela
-	glMatrixMode(GL_PROJECTION);
-	glLoadIdentity();	
-	gluPerspective(60,(GLfloat)width/height,.5,100);
-	// Matriz Modelview
-	// Matriz onde são realizadas as tranformacoes dos modelos desenhados
-	glMatrixMode(GL_MODELVIEW);
-
-}
-
-
-void reshapeNavigateSubwindow(int width, int height)
-{
-	// glViewport(botom, left, width, height)
-	// define parte da janela a ser utilizada pelo OpenGL
-	glViewport(0, 0, (GLint) width, (GLint) height);
-	// Matriz Projeccao
-	// Matriz onde se define como o mundo e apresentado na janela
-	glMatrixMode(GL_PROJECTION);
-	glLoadIdentity();	
-	gluPerspective(estado.camera.fov,(GLfloat)width/height,0.1,50);
-	// Matriz Modelview
-	// Matriz onde são realizadas as tranformacoes dos modelos desenhados
-	glMatrixMode(GL_MODELVIEW);
-}
-
-void reshapeMainWindow(int width, int height)
-{
-	GLint w,h;
-	w = (width-GAP*3)*.5;
-	h = (height-GAP*2);    
-	glutSetWindow(estado.topSubwindow);
-	glutPositionWindow(GAP, GAP);
-	glutReshapeWindow(w, h);
-	glutSetWindow(estado.navigateSubwindow);
-	glutPositionWindow(GAP+w+GAP, GAP);
-	glutReshapeWindow(w, h);
-
-}
 
 void strokeCenterString(char *str,double x, double y, double z, double s)
 {
@@ -185,29 +90,7 @@ void desenhaCubo()
 }
 
 
-void desenhaAngVisao(camera_t *cam)
-{
-	GLfloat ratio;
-	ratio=(GLfloat)glutGet(GLUT_WINDOW_WIDTH)/glutGet(GLUT_WINDOW_HEIGHT); // proporção 
-	glEnable(GL_BLEND);
-	glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
-	glDepthMask(GL_FALSE);
 
-	glPushMatrix();
-	glTranslatef(cam->eye.x,OBJECTO_ALTURA,cam->eye.z);
-	glColor4f(0,0,1,0.2);
-	glRotatef(GRAUS(cam->dir_long),0,1,0);
-
-	glBegin(GL_TRIANGLES);
-	glVertex3f(0,0,0);
-	glVertex3f(5*cos(RAD(cam->fov*ratio*0.5)),0,-5*sin(RAD(cam->fov*ratio*0.5)));
-	glVertex3f(5*cos(RAD(cam->fov*ratio*0.5)),0,5*sin(RAD(cam->fov*ratio*0.5)));
-	glEnd();
-	glPopMatrix();
-
-	glDepthMask(GL_TRUE);
-	glDisable(GL_BLEND);
-}
 
 void desenhaModelo()
 {
@@ -263,111 +146,6 @@ void mouseNavigateSubwindow(int button, int state, int x, int y)
 
 }
 
-void setNavigateSubwindowCamera(camera_t *cam, objecto_t obj)
-{
-
-	pos_t center;
-	/*
-	if(estado.vista[JANELA_NAVIGATE])
-	{
-	*/
-	cam->eye.x=obj.pos.x-1;
-	cam->eye.y=obj.pos.y+.2;
-	cam->eye.z=obj.pos.z-1;
-	center.x=obj.pos.x;
-	center.y=obj.pos.y+.2;
-	center.z=obj.pos.z;
-	/*
-	}
-	else
-	{
-
-	}
-	*/
-	gluLookAt(cam->eye.x,cam->eye.y,cam->eye.z,center.x,center.y,center.z,0,1,0);
-}
-
-
-void displayNavigateSubwindow()
-{
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-	glLoadIdentity();
-
-	setNavigateSubwindowCamera(&estado.camera, modelo.objecto);
-	setLight();
-
-	glCallList(modelo.labirinto[JANELA_NAVIGATE]);
-	glCallList(modelo.chao[JANELA_NAVIGATE]);
-
-	if(!estado.vista[JANELA_NAVIGATE])
-	{
-		glPushMatrix();
-		glTranslatef(modelo.objecto.pos.x,modelo.objecto.pos.y,modelo.objecto.pos.z);
-		glRotatef(GRAUS(modelo.objecto.dir),0,1,0);
-		glRotatef(-90,1,0,0);
-		glScalef(SCALE_HOMER,SCALE_HOMER,SCALE_HOMER);
-		mdlviewer_display(modelo.stdModel[JANELA_NAVIGATE]);
-		glPopMatrix();
-	}
-
-	glutSwapBuffers();
-}
-
-/////////////////////////////////////
-//topSubwindow
-void setTopSubwindowCamera( camera_t *cam,objecto_t obj)
-{
-	cam->eye.x=obj.pos.x;
-	cam->eye.z=obj.pos.z;
-	if(estado.vista[JANELA_TOP])
-		gluLookAt(obj.pos.x,CHAO_DIMENSAO*.2,obj.pos.z,obj.pos.x,obj.pos.y,obj.pos.z,0,0,-1);
-	else
-		gluLookAt(obj.pos.x,CHAO_DIMENSAO*2,obj.pos.z,obj.pos.x,obj.pos.y,obj.pos.z,0,0,-1);
-}
-
-void displayTopSubwindow()
-{
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-	glLoadIdentity();
-	setTopSubwindowCamera(&estado.camera,modelo.objecto);
-	setLight();
-
-	glCallList(modelo.labirinto[JANELA_TOP]);
-	glCallList(modelo.chao[JANELA_TOP]);
-
-	glPushMatrix();		
-	glTranslatef(modelo.objecto.pos.x,modelo.objecto.pos.y,modelo.objecto.pos.z);
-	glRotatef(GRAUS(modelo.objecto.dir),0,1,0);
-	glRotatef(-90,1,0,0);
-	glScalef(SCALE_HOMER,SCALE_HOMER,SCALE_HOMER);
-	mdlviewer_display(modelo.stdModel[JANELA_TOP]);
-	glPopMatrix();
-
-	desenhaAngVisao(&estado.camera);
-	glutSwapBuffers();
-}
-
-
-/////////////////////////////////////
-//mainWindow
-
-void redisplayAll(void)
-{
-	glutSetWindow(estado.mainWindow);
-	glutPostRedisplay();
-	glutSetWindow(estado.topSubwindow);
-	glutPostRedisplay();
-	glutSetWindow(estado.navigateSubwindow);
-	glutPostRedisplay();
-}
-
-void displayMainWindow()
-{
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);	
-	glutSwapBuffers();
-}
 
 void Timer(int value)
 {
@@ -482,107 +260,6 @@ void imprime_ajuda(void)
 	printf("ESC - Sair\n");
 }
 
-
-void Key(unsigned char key, int x, int y)
-{
-
-	switch (key) {
-	case 'z':
-	case 'Z': estado.teclas.z=GL_TRUE;
-		break;
-	case 27:
-		exit(1);
-		break;
-	case 'h' :
-	case 'H' :
-		imprime_ajuda();
-		break;
-	case 'l':
-	case 'L':
-		estado.localViewer=!estado.localViewer;
-		break;
-	case 'w':
-	case 'W':
-		glutSetWindow(estado.navigateSubwindow);
-		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-		glDisable(GL_TEXTURE_2D);
-		glutSetWindow(estado.topSubwindow);
-		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-		glDisable(GL_TEXTURE_2D);
-		break;
-	case 's':
-	case 'S':
-		glutSetWindow(estado.navigateSubwindow);
-		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-		glDisable(GL_TEXTURE_2D);
-		glutSetWindow(estado.topSubwindow);
-		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-		glDisable(GL_TEXTURE_2D);
-		break;
-	}
-}
-
-void KeyUp(unsigned char key, int x, int y)
-{
-	switch (key) {
-	case 'z':
-	case 'Z': estado.teclas.z=GL_FALSE;
-		printf("A tecla z foi desprimida");
-		break;
-	}
-}
-
-void SpecialKey(int key, int x, int y)
-{
-	switch (key) {
-
-	case GLUT_KEY_UP: estado.teclas.up =GL_TRUE;
-		break;
-	case GLUT_KEY_DOWN: estado.teclas.down =GL_TRUE;
-		break;
-	case GLUT_KEY_LEFT: estado.teclas.left =GL_TRUE;
-		break;
-	case GLUT_KEY_RIGHT: estado.teclas.right =GL_TRUE;
-		break;
-	case GLUT_KEY_F1: estado.vista[JANELA_TOP]=!estado.vista[JANELA_TOP];
-		break;
-	case GLUT_KEY_F2: estado.vista[JANELA_NAVIGATE]=!estado.vista[JANELA_NAVIGATE];
-		break;
-	case GLUT_KEY_PAGE_UP: 
-		if(estado.camera.fov>20)
-		{
-			estado.camera.fov--;
-			glutSetWindow(estado.navigateSubwindow);
-			reshapeNavigateSubwindow(glutGet(GLUT_WINDOW_WIDTH),glutGet(GLUT_WINDOW_HEIGHT));
-			redisplayAll();
-		}
-		break;
-	case GLUT_KEY_PAGE_DOWN: 
-		if(estado.camera.fov<130)
-		{
-			estado.camera.fov++;
-			glutSetWindow(estado.navigateSubwindow);
-			reshapeNavigateSubwindow(glutGet(GLUT_WINDOW_WIDTH),glutGet(GLUT_WINDOW_HEIGHT));
-			redisplayAll();
-		}
-		break;
-	}
-
-}
-// Callback para interaccao via teclas especiais (largar na tecla)
-void SpecialKeyUp(int key, int x, int y)
-{
-	switch (key) {
-	case GLUT_KEY_UP: estado.teclas.up =GL_FALSE;
-		break;
-	case GLUT_KEY_DOWN: estado.teclas.down =GL_FALSE;
-		break;
-	case GLUT_KEY_LEFT: estado.teclas.left =GL_FALSE;
-		break;
-	case GLUT_KEY_RIGHT: estado.teclas.right =GL_FALSE;
-		break;
-	}
-}
 
 ////////////////////////////////////
 // Inicializações

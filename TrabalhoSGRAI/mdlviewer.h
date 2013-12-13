@@ -1,5 +1,4 @@
 #pragma once
-
 /***
 *
 *	Copyright (c) 1998, Valve LLC. All rights reserved.
@@ -9,6 +8,8 @@
 *	All Rights Reserved.
 *
 ****/
+#include "mathlib.h"
+#include "studio.h"
 
 typedef unsigned char 		byte;
 

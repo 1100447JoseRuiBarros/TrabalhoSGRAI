@@ -13,12 +13,8 @@
 *
 ****/
 
-
-
-
 #ifndef _STUDIO_H_
 #define _STUDIO_H_
-
 /*
 ==============================================================================
 
@@ -44,6 +40,8 @@ typedef unsigned char byte;
 #define MAXSTUDIOEVENTS		1024
 #define MAXSTUDIOPIVOTS		256
 #define MAXSTUDIOCONTROLLERS 8
+
+#include "mathlib.h"
 
 typedef struct 
 {

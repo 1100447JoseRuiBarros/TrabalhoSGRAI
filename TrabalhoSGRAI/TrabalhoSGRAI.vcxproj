@@ -70,18 +70,27 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="Globals.cpp" />
+    <ClCompile Include="Illumination.cpp" />
+    <ClCompile Include="Key.cpp" />
     <ClCompile Include="math.cpp" />
     <ClCompile Include="mdlviewer.cpp" />
     <ClCompile Include="readjpeg.c" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="studio_render.cpp" />
     <ClCompile Include="studio_utils.cpp" />
+    <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Camera.h" />
     <ClInclude Include="camera_t.h" />
     <ClInclude Include="defines.h" />
     <ClInclude Include="ESTADO.h" />
+    <ClInclude Include="Globals.h" />
     <ClInclude Include="GL\GLAux.h" />
+    <ClInclude Include="Illumination.h" />
+    <ClInclude Include="Key.h" />
     <ClInclude Include="MODELO.h" />
     <ClInclude Include="objecto_t.h" />
     <ClInclude Include="pos_t.h" />
@@ -92,6 +101,7 @@
     <ClInclude Include="mathlib.h" />
     <ClInclude Include="mdlviewer.h" />
     <ClInclude Include="studio.h" />
+    <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="GlAux.Lib" />

@@ -1,3 +1,5 @@
+#pragma once
+
 #include <GL/glut.h>
 #ifdef _WIN32
 #include "GL/glaux.h"

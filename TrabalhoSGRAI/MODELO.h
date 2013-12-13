@@ -1,13 +1,11 @@
+#pragma once
+
 #include <GL/glut.h>
 #ifdef _WIN32
 #include "GL/glaux.h"
 #endif
-#include "camera_t.h"
-#include "teclas_t.h"
-#include "defines.h"
-#include "objecto_t.h"
-#include "studio.h"
 #include "mdlviewer.h"
+#include "objecto_t.h"
 
 class MODELO{
 
