@@ -23,6 +23,9 @@ void Key(unsigned char key, int x, int y)
 	case 'z':
 	case 'Z': estado.teclas.z=GL_TRUE;
 		break;
+	case 'x':
+	case 'X': estado.teclas.x=GL_TRUE;
+		break;
 	case 27:
 		exit(1);
 		break;
