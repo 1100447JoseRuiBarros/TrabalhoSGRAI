@@ -19,67 +19,67 @@ void Timer(int value)
 	GLfloat nx=0,nz=0;
 	float velocidade;
 
-	if(estado.teclas.z && modelo.andar)
-		modelo.correr=GL_TRUE;
+	if(estado.teclas.z && gordon.andar)
+		gordon.correr=GL_TRUE;
 	else
-		modelo.correr=GL_FALSE;
+		gordon.correr=GL_FALSE;
 
 	if(!estado.teclas.up && !estado.teclas.down){
 		/*modelo.andarFrente=GL_FALSE;
 		modelo.andarTras=GL_FALSE;
 		modelo.correr=GL_FALSE;*/
-		modelo.andar=GL_FALSE;
-		if(modelo.stdModel[JANELA_NAVIGATE].GetSequence()!=0)
-			modelo.stdModel[JANELA_NAVIGATE].SetSequence(0);
+		gordon.andar=GL_FALSE;
+		if(gordon.stdModel[JANELA_NAVIGATE].GetSequence()!=0)
+			gordon.stdModel[JANELA_NAVIGATE].SetSequence(0);
 	}
 
 	GLuint curr = glutGet(GLUT_ELAPSED_TIME);
 	// calcula velocidade baseado no tempo passado
 
-	if(!modelo.correr)
-		velocidade= modelo.objecto.vel*(curr - modelo.prev )*0.001;
+	if(!gordon.correr)
+		velocidade= gordon.objecto.vel*(curr - gordon.prev )*0.001;
 	else
-		velocidade= modelo.objecto.vel*(curr - modelo.prev )*0.001*2;
+		velocidade= gordon.objecto.vel*(curr - gordon.prev )*0.001*2;
 
 
 	glutTimerFunc(estado.timer, Timer, 0);
-	modelo.prev = curr;
+	gordon.prev = curr;
 
 
 	if(estado.teclas.up){
 		//Roda Objecto
-		if(!modelo.andarFrente){
-			modelo.objecto.dir+=M_PI;
-			modelo.andarFrente=GL_TRUE;
+		if(!gordon.andarFrente){
+			gordon.objecto.dir+=M_PI;
+			gordon.andarFrente=GL_TRUE;
 		}
 		// calcula nova posição nx,nz
-		nx=modelo.objecto.pos.x+velocidade;
+		nx=gordon.objecto.pos.x+velocidade;
 		//nz=modelo.objecto.pos.z-velocidade*sin(modelo.objecto.dir);
 
 		//if(!detectaColisao(nx,nz)){
 
-		modelo.objecto.pos.x=nx;
+		gordon.objecto.pos.x=nx;
 		//	//modelo.objecto.pos.z=nz;
-		modelo.andar=GL_TRUE;
+		gordon.andar=GL_TRUE;
 		//}
 	}
 
 	if(estado.teclas.down){
 		//roda o objecto
 
-		if(modelo.andarFrente){
-			modelo.objecto.dir-=M_PI;
-			modelo.andarFrente=GL_FALSE;
+		if(gordon.andarFrente){
+			gordon.objecto.dir-=M_PI;
+			gordon.andarFrente=GL_FALSE;
 		}
 		// calcula nova posição nx,nz
-		nx=modelo.objecto.pos.x-velocidade;
+		nx=gordon.objecto.pos.x-velocidade;
 		//nz=modelo.objecto.pos.z-velocidade*sin(modelo.objecto.dir);
 
 		//if(!detectaColisao(nx,nz)){
 
-		modelo.objecto.pos.x=nx;
+		gordon.objecto.pos.x=nx;
 		//	//dmodelo.objecto.pos.z=nz;
-		modelo.andar=GL_TRUE;
+		gordon.andar=GL_TRUE;
 		//}
 	}
 
@@ -91,14 +91,14 @@ void Timer(int value)
 		// rodar camara e objecto
 	}
 
-	if( modelo.andar && !modelo.correr && modelo.stdModel[JANELA_NAVIGATE].GetSequence()!=4)
-		modelo.stdModel[JANELA_NAVIGATE].SetSequence(4);
+	if( gordon.andar && !gordon.correr && gordon.stdModel[JANELA_NAVIGATE].GetSequence()!=4)
+		gordon.stdModel[JANELA_NAVIGATE].SetSequence(4);
 
 	//if(!modelo.andarFrente && !modelo.andarTras && !modelo.correr && modelo.stdModel[JANELA_NAVIGATE].GetSequence()!=0)
 	//	modelo.stdModel[JANELA_NAVIGATE].SetSequence(0);
 
-	if(modelo.correr && modelo.stdModel[JANELA_NAVIGATE].GetSequence()!=3)
-		modelo.stdModel[JANELA_NAVIGATE].SetSequence(3);
+	if(gordon.correr && gordon.stdModel[JANELA_NAVIGATE].GetSequence()!=3)
+		gordon.stdModel[JANELA_NAVIGATE].SetSequence(3);
 
 	// Sequencias - 0(parado) 3(andar) 20(choque)
 	//  modelo.homer[JANELA_NAVIGATE].GetSequence()  le Sequencia usada pelo homer

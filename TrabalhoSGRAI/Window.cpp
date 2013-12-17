@@ -74,7 +74,7 @@ void displayNavigateSubwindow()
 
 	glLoadIdentity();
 
-	setNavigateSubwindowCamera(&estado.camera, modelo.objecto);
+	setNavigateSubwindowCamera(&estado.camera, gordon.objecto);
 	setLight();
 
 	glCallList(modelo.labirinto[JANELA_NAVIGATE]);
@@ -83,12 +83,25 @@ void displayNavigateSubwindow()
 	if(!estado.vista[JANELA_NAVIGATE])
 	{
 		glPushMatrix();
-		glTranslatef(modelo.objecto.pos.x,modelo.objecto.pos.y,modelo.objecto.pos.z);
-		glRotatef(GRAUS(modelo.objecto.dir),0,1,0);
+		glTranslatef(gordon.objecto.pos.x,gordon.objecto.pos.y,gordon.objecto.pos.z);
+		glRotatef(GRAUS(gordon.objecto.dir),0,1,0);
 		glRotatef(-90,1,0,0);
 		glScalef(SCALE_HOMER,SCALE_HOMER,SCALE_HOMER);
-		mdlviewer_display(modelo.stdModel[JANELA_NAVIGATE]);
+		mdlviewer_display(gordon.stdModel[JANELA_NAVIGATE]);
 		glPopMatrix();
+
+		GLint x=2;
+
+		for(int i=0;i<3;i++){
+
+			glPushMatrix();
+			glTranslatef(x+i,0,0);
+			//glRotatef(GRAUS(gordon.objecto.dir),0,1,0);
+			glRotatef(-90,1,0,0);
+			glScalef(SCALE_HOMER,SCALE_HOMER,SCALE_HOMER);
+			mdlviewer_display(headCrabs[i].stdModel[JANELA_NAVIGATE]);
+			glPopMatrix();
+		}
 	}
 
 	glutSwapBuffers();
@@ -99,19 +112,32 @@ void displayTopSubwindow()
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	glLoadIdentity();
-	setTopSubwindowCamera(&estado.camera,modelo.objecto);
+	setTopSubwindowCamera(&estado.camera,gordon.objecto);
 	setLight();
 
 	glCallList(modelo.labirinto[JANELA_TOP]);
 	glCallList(modelo.chao[JANELA_TOP]);
 
 	glPushMatrix();		
-	glTranslatef(modelo.objecto.pos.x,modelo.objecto.pos.y,modelo.objecto.pos.z);
-	glRotatef(GRAUS(modelo.objecto.dir),0,1,0);
+	glTranslatef(gordon.objecto.pos.x,gordon.objecto.pos.y,gordon.objecto.pos.z);
+	glRotatef(GRAUS(gordon.objecto.dir),0,1,0);
 	glRotatef(-90,1,0,0);
 	glScalef(SCALE_HOMER,SCALE_HOMER,SCALE_HOMER);
-	mdlviewer_display(modelo.stdModel[JANELA_TOP]);
+	mdlviewer_display(gordon.stdModel[JANELA_TOP]);
 	glPopMatrix();
+
+	GLint x=2;
+
+		for(int i=0;i<3;i++){
+
+			glPushMatrix();
+			glTranslatef(x+i,0,0);
+			//glRotatef(GRAUS(gordon.objecto.dir),0,1,0);
+			glRotatef(-90,1,0,0);
+			glScalef(SCALE_HOMER,SCALE_HOMER,SCALE_HOMER);
+			mdlviewer_display(headCrabs[i].stdModel[JANELA_TOP]);
+			glPopMatrix();
+		}
 
 	desenhaAngVisao(&estado.camera);
 	glutSwapBuffers();

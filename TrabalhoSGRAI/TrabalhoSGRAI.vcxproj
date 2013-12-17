@@ -76,6 +76,7 @@
     <ClCompile Include="Key.cpp" />
     <ClCompile Include="math.cpp" />
     <ClCompile Include="mdlviewer.cpp" />
+    <ClCompile Include="Model.cpp" />
     <ClCompile Include="readjpeg.c" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="Timer.cpp" />
@@ -92,6 +93,7 @@
     <ClInclude Include="GL\GLAux.h" />
     <ClInclude Include="Illumination.h" />
     <ClInclude Include="Key.h" />
+    <ClInclude Include="Model.h" />
     <ClInclude Include="MODELO.h" />
     <ClInclude Include="objecto_t.h" />
     <ClInclude Include="pos_t.h" />

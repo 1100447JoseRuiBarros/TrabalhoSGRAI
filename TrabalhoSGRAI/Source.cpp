@@ -93,17 +93,17 @@ void desenhaCubo()
 
 
 
-void desenhaModelo()
-{
-	glColor3f(0,1,0);
-	glutSolidCube(OBJECTO_ALTURA);
-	glPushMatrix();
-	glColor3f(1,0,0);
-	glTranslatef(GRAUS(modelo.objecto.dir),OBJECTO_ALTURA*0.75,0);
-	glRotatef(0,0,1,0);
-	glutSolidCube(OBJECTO_ALTURA*0.5);
-	glPopMatrix();
-}
+//void desenhaModelo()
+//{
+//	glColor3f(0,1,0);
+//	glutSolidCube(OBJECTO_ALTURA);
+//	glPushMatrix();
+//	glColor3f(1,0,0);
+//	glTranslatef(GRAUS(modelo.objecto.dir),OBJECTO_ALTURA*0.75,0);
+//	glRotatef(0,0,1,0);
+//	glutSolidCube(OBJECTO_ALTURA*0.5);
+//	glPopMatrix();
+//}
 
 
 #define STEP    1
@@ -297,15 +297,15 @@ void init()
 	estado.vista[JANELA_TOP]=0;
 	estado.vista[JANELA_NAVIGATE]=0;
 
-	modelo.objecto.pos.x=0;
-	modelo.objecto.pos.y=OBJECTO_ALTURA*.5;
-	modelo.objecto.pos.z=0;
-	modelo.objecto.dir=0;
-	modelo.objecto.vel=OBJECTO_VELOCIDADE;
+	gordon.objecto.pos.x=0;
+	gordon.objecto.pos.y=OBJECTO_ALTURA*.5;
+	gordon.objecto.pos.z=0;
+	gordon.objecto.dir=0;
+	gordon.objecto.vel=OBJECTO_VELOCIDADE;
+	gordon.andarFrente=GL_TRUE;
 
 	modelo.xMouse=modelo.yMouse=-1;
-	modelo.andarFrente=GL_TRUE;
-
+	
 	glEnable(GL_DEPTH_TEST);
 	glShadeModel(GL_SMOOTH);
 	glEnable(GL_POINT_SMOOTH);
@@ -353,7 +353,10 @@ int main(int argc, char **argv)
 	createTextures(modelo.texID[JANELA_TOP]);
 	createDisplayLists(JANELA_TOP);
 
-	mdlviewer_init("gordon.mdl", modelo.stdModel[JANELA_TOP] );
+	mdlviewer_init("gordon.mdl", gordon.stdModel[JANELA_TOP] );
+
+	for(int i=0;i<3;i++)
+		mdlviewer_init("headcrab.mdl", headCrabs[i].stdModel[JANELA_TOP] );
 
 	glutReshapeFunc(redisplayTopSubwindow);
 	glutDisplayFunc(displayTopSubwindow);
@@ -372,7 +375,10 @@ int main(int argc, char **argv)
 
 	createTextures(modelo.texID[JANELA_NAVIGATE]);
 	createDisplayLists(JANELA_NAVIGATE);
-	mdlviewer_init( "gordon.mdl", modelo.stdModel[JANELA_NAVIGATE] );
+	mdlviewer_init("gordon.mdl", gordon.stdModel[JANELA_NAVIGATE] );
+
+	for(int i=0;i<3;i++)
+		mdlviewer_init("headcrab.mdl", headCrabs[i].stdModel[JANELA_NAVIGATE] );
 
 	glutReshapeFunc(reshapeNavigateSubwindow);
 	glutDisplayFunc(displayNavigateSubwindow);
