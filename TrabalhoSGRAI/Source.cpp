@@ -303,6 +303,7 @@ void init()
 	gordon.objecto.dir=0;
 	gordon.objecto.vel=OBJECTO_VELOCIDADE;
 	gordon.andarFrente=GL_TRUE;
+	gordon.saltar=GL_FALSE;
 
 	modelo.xMouse=modelo.yMouse=-1;
 	

@@ -37,3 +37,5 @@
 #define NUM_JANELAS               2
 #define JANELA_TOP                0
 #define JANELA_NAVIGATE           1
+
+#define TEMPO_SALTO				900

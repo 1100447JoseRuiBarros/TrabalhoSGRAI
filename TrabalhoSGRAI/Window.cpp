@@ -90,6 +90,8 @@ void displayNavigateSubwindow()
 		mdlviewer_display(gordon.stdModel[JANELA_NAVIGATE]);
 		glPopMatrix();
 
+		desenhaBoundingBox();
+
 		GLint x=2;
 
 		for(int i=0;i<3;i++){

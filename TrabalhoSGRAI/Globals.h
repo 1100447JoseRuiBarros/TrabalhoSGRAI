@@ -11,3 +11,5 @@ extern ESTADO estado;
 extern MODELO modelo;
 extern Model gordon;
 extern Model headCrabs[3];
+
+void desenhaBoundingBox();

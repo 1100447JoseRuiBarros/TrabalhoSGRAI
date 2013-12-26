@@ -65,6 +65,10 @@ void KeyUp(unsigned char key, int x, int y)
 	case 'Z': estado.teclas.z=GL_FALSE;
 		printf("A tecla z foi desprimida");
 		break;
+	case 'x':
+	case 'X': estado.teclas.x=GL_FALSE;
+		//printf("A tecla z foi desprimida");
+		break;
 	}
 }
 

@@ -17,7 +17,9 @@ public:
 	GLboolean     andarFrente;
 	GLboolean     andar;
 	GLboolean	  correr;
+	GLboolean	  saltar;
 	GLuint        prev;
+	GLuint	      saltarStartTime;
 	
 	Model();
 	~Model();
