@@ -11,7 +11,8 @@
 class ESTADO{
 
 public:
-	camera_t      camera;
+	camera_t      camera1;
+	camera_t      camera2;
 	GLint         timer;
 	GLint         mainWindow,topSubwindow,navigateSubwindow;
 	teclas_t      teclas;

@@ -1,26 +1,10 @@
-﻿Build started 27-12-2013 21:10:05.
-     1>Project "C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\TrabalhoSGRAI.vcxproj" on node 2 (build target(s)).
-     1>InitializeBuildStatus:
-         Creating "Debug\TrabalhoSGRAI.unsuccessfulbuild" because "AlwaysCreate" was specified.
-       ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _CRT_SECURE_NO_WARNINGS /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt Camera.cpp Globals.cpp Illumination.cpp Key.cpp math.cpp mdlviewer.cpp Model.cpp Source.cpp Timer.cpp studio_render.cpp studio_utils.cpp Window.cpp
-         Window.cpp
-         studio_utils.cpp
-         studio_render.cpp
-         Timer.cpp
-         Source.cpp
-         Model.cpp
-         mdlviewer.cpp
-         math.cpp
-         Key.cpp
-         Illumination.cpp
-         Globals.cpp
+﻿Build started 28-12-2013 14:00:24.
+     1>Project "C:\Users\Rui Barros\Documents\TrabalhoSGRAI\TrabalhoSGRAI\TrabalhoSGRAI.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _CRT_SECURE_NO_WARNINGS /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Camera.cpp
          Camera.cpp
-         Generating Code...
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _CRT_SECURE_NO_WARNINGS /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TC /analyze- /errorReport:prompt readjpeg.c
-         readjpeg.c
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Andre\Desktop\Repositorio\Debug\TrabalhoSGRAI.exe" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\TrabalhoSGRAI.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\Andre\Desktop\Repositorio\Debug\TrabalhoSGRAI.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Andre\Desktop\Repositorio\Debug\TrabalhoSGRAI.lib" /MACHINE:X86 Debug\Camera.obj
+         C:\Program Files\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Rui Barros\Documents\TrabalhoSGRAI\Debug\TrabalhoSGRAI.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Rui Barros\Documents\TrabalhoSGRAI\Debug\TrabalhoSGRAI.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Rui Barros\Documents\TrabalhoSGRAI\Debug\TrabalhoSGRAI.lib" /MACHINE:X86 Debug\Camera.obj
          Debug\Globals.obj
          Debug\Illumination.obj
          Debug\Key.obj
@@ -35,15 +19,9 @@
          Debug\Window.obj
          GlAux.Lib
          libjpeg.lib
-         LINK : C:\Users\Andre\Desktop\Repositorio\Debug\TrabalhoSGRAI.exe not found or not built by the last incremental link; performing full link
-         TrabalhoSGRAI.vcxproj -> C:\Users\Andre\Desktop\Repositorio\Debug\TrabalhoSGRAI.exe
-       Manifest:
-         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"C:\Users\Andre\Desktop\Repositorio\Debug\TrabalhoSGRAI.exe;#1" /manifest Debug\TrabalhoSGRAI.exe.intermediate.manifest
-       FinalizeBuildStatus:
-         Deleting file "Debug\TrabalhoSGRAI.unsuccessfulbuild".
-         Touching "Debug\TrabalhoSGRAI.lastbuildstate".
-     1>Done Building Project "C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\TrabalhoSGRAI.vcxproj" (build target(s)).
+         TrabalhoSGRAI.vcxproj -> C:\Users\Rui Barros\Documents\TrabalhoSGRAI\Debug\TrabalhoSGRAI.exe
+     1>Done Building Project "C:\Users\Rui Barros\Documents\TrabalhoSGRAI\TrabalhoSGRAI\TrabalhoSGRAI.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:23.29
+Time Elapsed 00:00:07.03

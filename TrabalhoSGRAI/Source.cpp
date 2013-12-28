@@ -551,19 +551,20 @@ void init()
 
 	estado.timer=100;	
 
-	estado.camera.eye.x=0;
+	/*estado.camera.eye.x=0;
 	estado.camera.eye.y=OBJECTO_ALTURA*2;
 	estado.camera.eye.z=0;
 	estado.camera.dir_long=0;
-	estado.camera.dir_lat=0;
-	estado.camera.fov=60;
+	estado.camera.dir_lat=0;*/
+	estado.camera1.fov=60;
+	estado.camera2.fov=60;
 
 	estado.localViewer=1;
 	estado.vista[JANELA_TOP]=0;
 	estado.vista[JANELA_NAVIGATE]=0;
 
 	gordon.objecto.pos.x=0;
-	gordon.objecto.pos.y=OBJECTO_ALTURA*.5;
+	gordon.objecto.pos.y=OBJECTO_ALTURA+0.15;
 	gordon.objecto.pos.z=0;
 	gordon.objecto.dir=0;
 	gordon.objecto.vel=OBJECTO_VELOCIDADE;

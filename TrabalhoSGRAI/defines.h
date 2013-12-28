@@ -13,7 +13,7 @@
 #define OBJECTO_VELOCIDADE	      0.5
 #define OBJECTO_ROTACAO		        5
 #define OBJECTO_RAIO		      0.12
-#define SCALE_HOMER               0.005
+#define SCALE_GORDON               0.015
 #define EYE_ROTACAO			        1
 
 #define NOME_TEXTURA_CUBOS			"Cubo.bmp"

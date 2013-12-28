@@ -88,7 +88,7 @@ void SpecialKey(int key, int x, int y)
 		break;
 	case GLUT_KEY_F2: estado.vista[JANELA_NAVIGATE]=!estado.vista[JANELA_NAVIGATE];
 		break;
-	case GLUT_KEY_PAGE_UP: 
+	/*case GLUT_KEY_PAGE_UP: 
 		if(estado.camera.fov>20)
 		{
 			estado.camera.fov--;
@@ -105,7 +105,7 @@ void SpecialKey(int key, int x, int y)
 			reshapeNavigateSubwindow(glutGet(GLUT_WINDOW_WIDTH),glutGet(GLUT_WINDOW_HEIGHT));
 			redisplayAll();
 		}
-		break;
+		break;*/
 	}
 
 }
