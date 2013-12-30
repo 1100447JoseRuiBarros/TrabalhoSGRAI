@@ -14,6 +14,7 @@
 
 #include "Globals.h"
 #include "Window.h"
+#include "Colisao.h"
 
 void Timer(int value)
 {
@@ -54,11 +55,11 @@ void Timer(int value)
 			nx=gordon.objecto.pos.x+velocidade;
 			//nz=modelo.objecto.pos.z-velocidade*sin(modelo.objecto.dir);
 
-			//if(!detectaColisao(nx,nz)){
+			if(!detectaColisao(nx,nz)){
 
-			gordon.objecto.pos.x=nx;
-			gordon.andar=GL_TRUE;
-			//}
+				gordon.objecto.pos.x=nx;
+				gordon.andar=GL_TRUE;
+			}
 		}
 
 		if(estado.teclas.down){
@@ -71,11 +72,11 @@ void Timer(int value)
 			// calcula nova posição nx,nz
 			nx=gordon.objecto.pos.x-velocidade;
 
-			//if(!detectaColisao(nx,nz)){
+			if(!detectaColisao(nx,nz)){
 
-			gordon.objecto.pos.x=nx;
-			gordon.andar=GL_TRUE;
-			//}
+				gordon.objecto.pos.x=nx;
+				gordon.andar=GL_TRUE;
+			}
 		}
 
 		if( gordon.andar && !gordon.correr && gordon.stdModel[JANELA_NAVIGATE].GetSequence()!=4)
@@ -96,8 +97,8 @@ void Timer(int value)
 		if(gordon.saltarStartTime + TEMPO_SALTO > curr){
 			//	gordon.saltar = GL_FALSE;
 			//gordon.stdModel[JANELA_NAVIGATE].SetSequence(0);
-			gordon.objecto.pos.y=abs(2*sin(M_PI*curr/TEMPO_SALTO));
-			
+			gordon.objecto.pos.y=abs(gordon.objecto.pos.y*2*sin(M_PI*curr/TEMPO_SALTO));
+
 			/*	else{*/
 			if(estado.teclas.up){
 				//Roda Objecto
@@ -135,7 +136,7 @@ void Timer(int value)
 
 		}
 		else{
-			
+
 			gordon.saltar = GL_FALSE;
 			gordon.stdModel[JANELA_NAVIGATE].SetSequence(0);
 		}

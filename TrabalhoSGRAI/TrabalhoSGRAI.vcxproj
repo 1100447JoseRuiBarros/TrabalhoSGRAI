@@ -71,6 +71,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="Colisao.cpp" />
     <ClCompile Include="Globals.cpp" />
     <ClCompile Include="Illumination.cpp" />
     <ClCompile Include="Key.cpp" />
@@ -87,6 +88,7 @@
   <ItemGroup>
     <ClInclude Include="Camera.h" />
     <ClInclude Include="camera_t.h" />
+    <ClInclude Include="Colisao.h" />
     <ClInclude Include="defines.h" />
     <ClInclude Include="ESTADO.h" />
     <ClInclude Include="Globals.h" />

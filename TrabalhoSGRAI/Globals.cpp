@@ -44,8 +44,8 @@ void desenhaBoundingBox(){
 	glPushMatrix();
 	//glLoadIdentity();
 	glTranslatef(gordon.objecto.pos.x,gordon.objecto.pos.y,gordon.objecto.pos.z);
-	glScalef(1,4,1);
+	glScalef(1,3,1);
 	glColor3f(10,0.0,0.0); 
-	glutSolidSphere(0.05,20,20);
+	glutSolidSphere(RAIOX_GORDON,20,20);
 	glPopMatrix();
 }

@@ -44,10 +44,7 @@ void strokeCenterString(char *str,double x, double y, double z, double s)
 /////////////////////////////////////
 //Modelo
 
-GLboolean detectaColisao(GLfloat nx,GLfloat nz)
-{
-	return GL_FALSE;
-}
+
 
 void desenhaPoligono(GLfloat a[], GLfloat b[], GLfloat c[], GLfloat  d[], GLfloat normal[])
 {
@@ -564,7 +561,7 @@ void init()
 	estado.vista[JANELA_NAVIGATE]=0;
 
 	gordon.objecto.pos.x=0;
-	gordon.objecto.pos.y=OBJECTO_ALTURA+0.15;
+	gordon.objecto.pos.y=OBJECTO_ALTURA;
 	gordon.objecto.pos.z=0;
 	gordon.objecto.dir=0;
 	gordon.objecto.vel=OBJECTO_VELOCIDADE;

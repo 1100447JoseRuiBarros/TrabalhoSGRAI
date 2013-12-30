@@ -83,7 +83,7 @@ void displayTopSubwindow()
 	glTranslatef(gordon.objecto.pos.x,gordon.objecto.pos.y,gordon.objecto.pos.z);
 	glRotatef(GRAUS(gordon.objecto.dir),0,1,0);
 	glRotatef(-90,1,0,0);
-	glScalef(SCALE_GORDON,SCALE_GORDON,SCALE_GORDON);
+	glScalef(SCALE_GORDON,SCALE_GORDON,SCALE_GORDONY);
 	mdlviewer_display(gordon.stdModel[JANELA_TOP]);
 	glPopMatrix();
 
@@ -122,7 +122,7 @@ void displayNavigateSubwindow()
 		glTranslatef(gordon.objecto.pos.x,gordon.objecto.pos.y,gordon.objecto.pos.z);
 		glRotatef(GRAUS(gordon.objecto.dir),0,1,0);
 		glRotatef(-90,1,0,0);
-		glScalef(SCALE_GORDON,SCALE_GORDON,SCALE_GORDON);
+		glScalef(SCALE_GORDON,SCALE_GORDON,SCALE_GORDONY);
 		mdlviewer_display(gordon.stdModel[JANELA_NAVIGATE]);
 		glPopMatrix();
 
