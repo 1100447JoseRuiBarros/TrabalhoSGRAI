@@ -39,13 +39,13 @@ void Timer(int value)
 		else
 			gordon.correr=GL_FALSE;
 
-		if(!estado.teclas.up && !estado.teclas.down){
+		if(!estado.teclas.right && !estado.teclas.left){
 			gordon.andar=GL_FALSE;
 			if(gordon.stdModel[JANELA_NAVIGATE].GetSequence()!=0)
 				gordon.stdModel[JANELA_NAVIGATE].SetSequence(0);
 		}
 
-		if(estado.teclas.up){
+		if(estado.teclas.right){
 			//Roda Objecto
 			if(!gordon.andarFrente){
 				gordon.objecto.dir+=M_PI;
@@ -62,7 +62,7 @@ void Timer(int value)
 			}
 		}
 
-		if(estado.teclas.down){
+		if(estado.teclas.left){
 			//roda o objecto
 
 			if(gordon.andarFrente){
@@ -93,14 +93,14 @@ void Timer(int value)
 		}
 	}
 	else{
-
+		float yInicial=gordon.objecto.pos.y;
 		if(gordon.saltarStartTime + TEMPO_SALTO > curr){
 			//	gordon.saltar = GL_FALSE;
 			//gordon.stdModel[JANELA_NAVIGATE].SetSequence(0);
-			gordon.objecto.pos.y=abs(gordon.objecto.pos.y*2*sin(M_PI*curr/TEMPO_SALTO));
+			gordon.objecto.pos.y=abs((yInicial+0.7)*sin(M_PI*curr/TEMPO_SALTO));
 
 			/*	else{*/
-			if(estado.teclas.up){
+			if(estado.teclas.right){
 				//Roda Objecto
 				if(!gordon.andarFrente){
 					gordon.objecto.dir+=M_PI;
@@ -117,7 +117,7 @@ void Timer(int value)
 				//}
 			}
 
-			if(estado.teclas.down){
+			if(estado.teclas.left){
 				//roda o objecto
 
 				if(gordon.andarFrente){
