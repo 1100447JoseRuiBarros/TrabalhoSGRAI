@@ -584,6 +584,7 @@ void init()
 		glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 
 	glLightModelfv(GL_LIGHT_MODEL_AMBIENT,amb);
+
 }
 
 /////////////////////////////////////
@@ -653,6 +654,11 @@ int main(int argc, char **argv)
 	glutSpecialFunc(SpecialKey);
 	glutSpecialUpFunc(SpecialKeyUp);
 
+	/*alutInit (&argc, argv);
+	estado.buffer[0] = alutCreateBufferFromFile("mario.mp3");
+	alGenSources(4, estado.source);
+	alSourcei(estado.source[0], AL_BUFFER, estado.buffer[0]);
+	alSourcePlay(estado.source[0]);*/
 
 	glutMainLoop();
 	return 0;

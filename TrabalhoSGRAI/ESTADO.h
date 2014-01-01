@@ -7,6 +7,7 @@
 #include "camera_t.h"
 #include "teclas_t.h"
 #include "defines.h"
+//#include "AL/alMain.h"
 
 class ESTADO{
 
@@ -18,4 +19,5 @@ public:
 	teclas_t      teclas;
 	GLboolean     localViewer;
 	GLuint        vista[NUM_JANELAS];
+	//ALuint        buffer[9], source[3];
 };
