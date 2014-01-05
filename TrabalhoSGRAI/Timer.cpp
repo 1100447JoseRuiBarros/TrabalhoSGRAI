@@ -123,7 +123,6 @@ void Timer(int value)
 
 			if(estado.teclas.left){
 				//roda o objecto
-				alSourcePlay(estado.source[1]);
 				if(gordon.andarFrente){
 					gordon.objecto.dir-=M_PI;
 					gordon.andarFrente=GL_FALSE;
