@@ -15,6 +15,7 @@
 #include "Globals.h"
 #include "Window.h"
 #include "Colisao.h"
+#include <AL/alut.h>
 
 void Timer(int value)
 {
@@ -90,10 +91,13 @@ void Timer(int value)
 			gordon.saltar=GL_TRUE;
 			gordon.stdModel[JANELA_NAVIGATE].SetSequence(8);
 			gordon.saltarStartTime=curr;
+			alSourcePlay(estado.source[1]);
 		}
 	}
 	else{
 		float yInicial=gordon.objecto.pos.y;
+		
+
 		if(gordon.saltarStartTime + TEMPO_SALTO > curr){
 			//	gordon.saltar = GL_FALSE;
 			//gordon.stdModel[JANELA_NAVIGATE].SetSequence(0);
@@ -119,7 +123,6 @@ void Timer(int value)
 
 			if(estado.teclas.left){
 				//roda o objecto
-
 				if(gordon.andarFrente){
 					gordon.objecto.dir-=M_PI;
 					gordon.andarFrente=GL_FALSE;
@@ -136,7 +139,7 @@ void Timer(int value)
 
 		}
 		else{
-
+			alSourceStop(estado.source[1]);
 			gordon.saltar = GL_FALSE;
 			gordon.stdModel[JANELA_NAVIGATE].SetSequence(0);
 		}
