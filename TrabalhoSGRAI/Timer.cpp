@@ -28,7 +28,7 @@ void Timer(int value)
 	if(!gordon.correr)
 		velocidade= gordon.objecto.vel*(curr - gordon.prev )*0.001;
 	else
-		velocidade= gordon.objecto.vel*(curr - gordon.prev )*0.001*2;
+		velocidade= gordon.objecto.vel*(curr - gordon.prev )*0.001*5;
 
 	glutTimerFunc(estado.timer, Timer, 0);
 	gordon.prev = curr;

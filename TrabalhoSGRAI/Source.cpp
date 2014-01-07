@@ -617,7 +617,7 @@ void init()
 		glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 
 	glLightModelfv(GL_LIGHT_MODEL_AMBIENT,amb);
-
+	
 }
 
 /////////////////////////////////////
@@ -642,7 +642,7 @@ int main(int argc, char **argv)
 	glutKeyboardUpFunc(KeyUp);
 	glutSpecialFunc(SpecialKey);
 	glutSpecialUpFunc(SpecialKeyUp);
-
+	glutSetKeyRepeat(GLUT_KEY_REPEAT_OFF);
 	// criar a sub window topSubwindow
 	estado.topSubwindow=glutCreateSubWindow(estado.mainWindow, GAP, GAP, 400, 400);
 	init();

@@ -20,12 +20,12 @@ void Key(unsigned char key, int x, int y)
 {
 
 	switch (key) {
-	case 'z':
+	/*case 'z':
 	case 'Z': estado.teclas.z=GL_TRUE;
 		break;
 	case 'x':
 	case 'X': estado.teclas.x=GL_TRUE;
-		break;
+		break;*/
 	case 27:
 		exit(1);
 		break;
@@ -60,22 +60,22 @@ void Key(unsigned char key, int x, int y)
 
 void KeyUp(unsigned char key, int x, int y)
 {
-	switch (key) {
-	case 'z':
-	case 'Z': estado.teclas.z=GL_FALSE;
-		printf("A tecla z foi desprimida");
-		break;
-	case 'x':
-	case 'X': estado.teclas.x=GL_FALSE;
-		//printf("A tecla z foi desprimida");
-		break;
-	}
+	//switch (key) {
+	//case 'z':
+	//case 'Z': estado.teclas.z=GL_FALSE;
+	//	printf("A tecla z foi desprimida");
+	//	break;
+	//case 'x':
+	//case 'X': estado.teclas.x=GL_FALSE;
+	//	//printf("A tecla z foi desprimida");
+	//	break;
+	//}
 }
 
 void SpecialKey(int key, int x, int y)
 {
 	switch (key) {
-
+		
 	case GLUT_KEY_UP: estado.teclas.up =GL_TRUE;
 		break;
 	case GLUT_KEY_DOWN: estado.teclas.down =GL_TRUE;
@@ -87,6 +87,10 @@ void SpecialKey(int key, int x, int y)
 	case GLUT_KEY_F1: estado.vista[JANELA_TOP]=!estado.vista[JANELA_TOP];
 		break;
 	case GLUT_KEY_F2: estado.vista[JANELA_NAVIGATE]=!estado.vista[JANELA_NAVIGATE];
+		break;
+	case GLUT_KEY_F3: estado.teclas.z=GL_TRUE;
+		break;
+	case GLUT_KEY_F4: estado.teclas.x=GL_TRUE;
 		break;
 	/*case GLUT_KEY_PAGE_UP: 
 		if(estado.camera.fov>20)
@@ -120,6 +124,10 @@ void SpecialKeyUp(int key, int x, int y)
 	case GLUT_KEY_LEFT: estado.teclas.left =GL_FALSE;
 		break;
 	case GLUT_KEY_RIGHT: estado.teclas.right =GL_FALSE;
+		break;
+	case GLUT_KEY_F3: estado.teclas.z=GL_FALSE;
+		break;
+	case GLUT_KEY_F4: estado.teclas.x=GL_FALSE;
 		break;
 	}
 }
