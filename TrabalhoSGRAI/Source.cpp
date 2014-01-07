@@ -236,7 +236,7 @@ void createTexturesSkybox()
 
 void desenhaPoligono(GLfloat a[], GLfloat b[], GLfloat c[], GLfloat  d[], GLfloat normal[])
 {
-<<<<<<< HEAD
+	
     glBegin(GL_POLYGON);
 		glColor3f(0.5f,0.5f,0.5f);
         glNormal3fv(normal);
@@ -249,69 +249,28 @@ void desenhaPoligono(GLfloat a[], GLfloat b[], GLfloat c[], GLfloat  d[], GLfloa
 		glTexCoord2f(0.0f, 1.0f);
         glVertex3fv(d);
     glEnd();
-=======
-	glBegin(GL_POLYGON);
-	glColor3f(5.0f,5.0f,5.0f);
-	glNormal3fv(normal);
-	glTexCoord2f(0.0f, 0.0f);
-	glVertex3fv(a);
-	glTexCoord2f(1.0f, 0.0f);
-	glVertex3fv(b);
-	glTexCoord2f(1.0f, 1.0f);
-	glVertex3fv(c);
-	glTexCoord2f(0.0f, 1.0f);
-	glVertex3fv(d);
-	glEnd();
->>>>>>> 25e5c3026cde2dcf6f7e2b379a733ec7650c868b
 }
 
 void desenhaCubo()
 {
-<<<<<<< HEAD
-	
-  GLfloat vertices[][3] = { {-0.5,-0.5,-0.5}, 
-							{0.5,-0.5,-0.5}, 
-							{0.5,0.5,-0.5}, 
-							{-0.5,0.5,-0.5}, 
-							{-0.5,-0.5,0.5},  
-							{0.5,-0.5,0.5}, 
-							{0.5,0.5,0.5}, 
-							{-0.5,0.5,0.5}
-							};
 
-  GLfloat normais[][3] = {	{0,0,-1},
-							{0,1,0},
-							{-1,0,0},
-							{1,0,0},
-							{0,0,1},
-							{0,-1,0}
-							};
-
-  desenhaPoligono(vertices[1],vertices[0],vertices[3],vertices[2],normais[0]);//tras
-  desenhaPoligono(vertices[2],vertices[3],vertices[7],vertices[6],normais[1]);//cima
-  desenhaPoligono(vertices[3],vertices[0],vertices[4],vertices[7],normais[2]);//esquerda
-  desenhaPoligono(vertices[6],vertices[5],vertices[1],vertices[2],normais[3]);//direita
-  desenhaPoligono(vertices[4],vertices[5],vertices[6],vertices[7],normais[4]);//frente
-  desenhaPoligono(vertices[5],vertices[4],vertices[0],vertices[1],normais[5]);//baixo
-  
-=======
-	GLfloat vertices[][3] = { {-0.5,-0.5,-0.5}, 
-	{0.5,-0.5,-0.5}, 
-	{0.5,0.5,-0.5}, 
-	{-0.5,0.5,-0.5}, 
-	{-0.5,-0.5,0.5},  
-	{0.5,-0.5,0.5}, 
-	{0.5,0.5,0.5}, 
-	{-0.5,0.5,0.5}
-	};
+	GLfloat vertices[][3] = {	{-0.5,-0.5,-0.5}, 
+								{0.5,-0.5,-0.5}, 
+								{0.5,0.5,-0.5}, 
+								{-0.5,0.5,-0.5}, 
+								{-0.5,-0.5,0.5},  
+								{0.5,-0.5,0.5}, 
+								{0.5,0.5,0.5}, 
+								{-0.5,0.5,0.5}
+								};
 
 	GLfloat normais[][3] = {	{0,0,-1},
-	{0,1,0},
-	{-1,0,0},
-	{1,0,0},
-	{0,0,1},
-	{0,-1,0}
-	};
+								{0,1,0},
+								{-1,0,0},
+								{1,0,0},
+								{0,0,1},
+								{0,-1,0}
+								};
 
 	desenhaPoligono(vertices[1],vertices[0],vertices[3],vertices[2],normais[0]);
 	desenhaPoligono(vertices[2],vertices[3],vertices[7],vertices[6],normais[1]);
@@ -319,7 +278,7 @@ void desenhaCubo()
 	desenhaPoligono(vertices[6],vertices[5],vertices[1],vertices[2],normais[3]);
 	desenhaPoligono(vertices[4],vertices[5],vertices[6],vertices[7],normais[4]);
 	desenhaPoligono(vertices[5],vertices[4],vertices[0],vertices[1],normais[5]);
->>>>>>> 25e5c3026cde2dcf6f7e2b379a733ec7650c868b
+	
 }
 
 void desenhachao(GLuint texID)
@@ -369,21 +328,12 @@ void desenhapips(GLuint texID)
 			if(chao_mapa[i][j]=='1')
 			{
 				glPushMatrix();
-<<<<<<< HEAD
 					glTranslatef(x-1,y,0);
 					glRotatef(90,1,0,0);
 					glRotatef(180,0,0,1);
-					//glColor3f(0.5f,0.5f,0.5f);
+					glColor3f(0.5f,0.5f,0.5f);
 					gluQuadricTexture(quad,1);
 					gluCylinder(quad,0.5,0.5,1,20,2);
-=======
-				glTranslatef(x-1,y,0);
-				glRotatef(90,1,0,0);
-				glRotatef(180,0,0,1);
-				glColor3f(5.0,5.0,5.0);
-				gluQuadricTexture(quad,1);
-				gluCylinder(quad,0.5,0.5,1,20,2);
->>>>>>> 25e5c3026cde2dcf6f7e2b379a733ec7650c868b
 				glPopMatrix();
 
 				//desenhar o topo do pipe
@@ -473,11 +423,7 @@ void desenhaplataformas(GLuint texID)
 
 void desenhaskybox()
 {
-<<<<<<< HEAD
 	createTexturesSkybox();
-=======
-	glPushMatrix();
->>>>>>> 25e5c3026cde2dcf6f7e2b379a733ec7650c868b
 
 	GLfloat normais[][3] = {	{0,0,-1},
 							{0,1,0},
@@ -490,7 +436,6 @@ void desenhaskybox()
     glPushMatrix();
 	
 	glTranslatef(70,0,0);
-<<<<<<< HEAD
 	glScalef(180.0f,180.0f,180.0f);
 	glColor3f(0.5f,0.5f,0.5f);
 	//face de tras
@@ -553,73 +498,11 @@ void desenhaskybox()
         glTexCoord2f(1, 0); glVertex3f(  0.5f, -0.5f, -0.5f );
     glEnd();
 	glBindTexture(GL_TEXTURE_2D, NULL);
-    // Restore enable bits and matrix
-    glPopAttrib();
-    glPopMatrix();
-=======
-	// Render the front quad
-	glBindTexture(GL_TEXTURE_2D, ID_SKYBOX1);
-	glScalef(180.0f,180.0f,180.0f);
-	glColor3f(5.0f,5.0f,5.0f);
-	glBegin(GL_QUADS);
-	glTexCoord2f(0, 0); glVertex3f(  0.5f, -0.5f, -0.5f );
-	glTexCoord2f(1, 0); glVertex3f( -0.5f, -0.5f, -0.5f );
-	glTexCoord2f(1, 1); glVertex3f( -0.5f,  0.5f, -0.5f );
-	glTexCoord2f(0, 1); glVertex3f(  0.5f,  0.5f, -0.5f );
-	glEnd();
-
-	// Render the left quad
-	glBindTexture(GL_TEXTURE_2D, ID_SKYBOX2);
-	glBegin(GL_QUADS);
-	glTexCoord2f(0, 0); glVertex3f(  0.5f, -0.5f,  0.5f );
-	glTexCoord2f(1, 0); glVertex3f(  0.5f, -0.5f, -0.5f );
-	glTexCoord2f(1, 1); glVertex3f(  0.5f,  0.5f, -0.5f );
-	glTexCoord2f(0, 1); glVertex3f(  0.5f,  0.5f,  0.5f );
-	glEnd();
-
-	// Render the back quad
-	glBindTexture(GL_TEXTURE_2D, ID_SKYBOX3);
-	glBegin(GL_QUADS);
-	glTexCoord2f(0, 0); glVertex3f( -0.5f, -0.5f,  0.5f );
-	glTexCoord2f(1, 0); glVertex3f(  0.5f, -0.5f,  0.5f );
-	glTexCoord2f(1, 1); glVertex3f(  0.5f,  0.5f,  0.5f );
-	glTexCoord2f(0, 1); glVertex3f( -0.5f,  0.5f,  0.5f );
-
-	glEnd();
-
-	// Render the right quad
-	glBindTexture(GL_TEXTURE_2D, ID_SKYBOX4);
-	glBegin(GL_QUADS);
-	glTexCoord2f(0, 0); glVertex3f( -0.5f, -0.5f, -0.5f );
-	glTexCoord2f(1, 0); glVertex3f( -0.5f, -0.5f,  0.5f );
-	glTexCoord2f(1, 1); glVertex3f( -0.5f,  0.5f,  0.5f );
-	glTexCoord2f(0, 1); glVertex3f( -0.5f,  0.5f, -0.5f );
-	glEnd();
-
-	// Render the top quad
-	glBindTexture(GL_TEXTURE_2D, ID_SKYBOX5);
-	glBegin(GL_QUADS);
-	glTexCoord2f(0, 1); glVertex3f( -0.5f,  0.5f, -0.5f );
-	glTexCoord2f(0, 0); glVertex3f( -0.5f,  0.5f,  0.5f );
-	glTexCoord2f(1, 0); glVertex3f(  0.5f,  0.5f,  0.5f );
-	glTexCoord2f(1, 1); glVertex3f(  0.5f,  0.5f, -0.5f );
-	glEnd();
-
-	// Render the bottom quad
-	glBindTexture(GL_TEXTURE_2D, ID_SKYBOX6);
-	glBegin(GL_QUADS);
-	glTexCoord2f(0, 0); glVertex3f( -0.5f, -0.5f, -0.5f );
-	glTexCoord2f(0, 1); glVertex3f( -0.5f, -0.5f,  0.5f );
-	glTexCoord2f(1, 1); glVertex3f(  0.5f, -0.5f,  0.5f );
-	glTexCoord2f(1, 0); glVertex3f(  0.5f, -0.5f, -0.5f );
-	glEnd();
-
 	// Restore enable bits and matrix
 	glPopAttrib();
 	glPopMatrix();
 
 	glBindTexture(GL_TEXTURE_2D, NULL);
->>>>>>> 25e5c3026cde2dcf6f7e2b379a733ec7650c868b
 }
 
 //void desenhaModelo()

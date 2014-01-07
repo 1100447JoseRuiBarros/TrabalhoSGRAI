@@ -1,20 +1,10 @@
-<<<<<<< HEAD
-﻿Build started 06-01-2014 17:54:09.
+﻿Build started 07-01-2014 13:42:56.
      1>Project "C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\TrabalhoSGRAI\TrabalhoSGRAI.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12 Express\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _CRT_SECURE_NO_WARNINGS /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Source.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12 Express\VC\bin\CL.exe /c /I"C:\Program Files (x86)\OpenAL 1.1 SDK\include" /I"C:\Program Files (x86)\freealut-1.1.0-bin\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _CRT_SECURE_NO_WARNINGS /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Source.cpp
          Source.cpp
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12 Express\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\Debug\TrabalhoSGRAI.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\Debug\TrabalhoSGRAI.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\Debug\TrabalhoSGRAI.lib" /MACHINE:X86 Debug\Camera.obj
-=======
-﻿Build started 04-01-2014 18:47:07.
-     1>Project "C:\Users\Rui Barros\Documents\TrabalhoSGRAI\TrabalhoSGRAI\TrabalhoSGRAI.vcxproj" on node 2 (Build target(s)).
-     1>ClCompile:
-         C:\Program Files\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"C:\Program Files\OpenAL 1.1 SDK\include" /IC:\ALUT\include /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _CRT_SECURE_NO_WARNINGS /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Timer.cpp
-         Timer.cpp
-       Link:
-         C:\Program Files\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Rui Barros\Documents\TrabalhoSGRAI\Debug\TrabalhoSGRAI.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Program Files\OpenAL 1.1 SDK\libs\Win32" /LIBPATH:C:\ALUT\lib alut.lib OpenAL32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Rui Barros\Documents\TrabalhoSGRAI\Debug\TrabalhoSGRAI.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Rui Barros\Documents\TrabalhoSGRAI\Debug\TrabalhoSGRAI.lib" /MACHINE:X86 Debug\Camera.obj
->>>>>>> 25e5c3026cde2dcf6f7e2b379a733ec7650c868b
+         C:\Program Files (x86)\Microsoft Visual Studio 12 Express\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\Debug\TrabalhoSGRAI.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Program Files (x86)\OpenAL 1.1 SDK\libs\Win32" /LIBPATH:"C:\Program Files (x86)\freealut-1.1.0-bin\lib" alut.lib OpenAL32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\Debug\TrabalhoSGRAI.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\Debug\TrabalhoSGRAI.lib" /MACHINE:X86 Debug\Camera.obj
          Debug\Colisao.obj
          Debug\Globals.obj
          Debug\Illumination.obj
@@ -35,8 +25,4 @@
 
 Build succeeded.
 
-<<<<<<< HEAD
-Time Elapsed 00:00:03.31
-=======
-Time Elapsed 00:00:11.37
->>>>>>> 25e5c3026cde2dcf6f7e2b379a733ec7650c868b
+Time Elapsed 00:00:03.66
