@@ -343,7 +343,8 @@ void desenhapips(GLuint texID)
 				glTranslatef(x-1,y,0);
 				glRotatef(90,1,0,0);
 				glBegin(GL_POLYGON);
-				glColor3f(0.031f,0.476f,0.105f);
+				//glColor3f(0.031f,0.476f,0.105f);
+				glColor3f(0.0f,0.0f,0.0f);
 				for(int i=0;i<numlados;i++)
 				{
 					glVertex3f(tamanho*cos(i*ang),tamanho*sin(i*ang),0.0);

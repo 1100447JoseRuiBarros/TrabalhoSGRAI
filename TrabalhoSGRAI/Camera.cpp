@@ -15,31 +15,32 @@
 #include "defines.h"
 #include "mathlib.h"
 #include "Globals.h"
-
+/*
 void desenhaAngVisao(camera_t *cam)
 {
-	GLfloat ratio;
-	ratio=(GLfloat)glutGet(GLUT_WINDOW_WIDTH)/glutGet(GLUT_WINDOW_HEIGHT); // proporção 
-	glEnable(GL_BLEND);
-	glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
-	glDepthMask(GL_FALSE);
+GLfloat ratio;
+ratio=(GLfloat)glutGet(GLUT_WINDOW_WIDTH)/glutGet(GLUT_WINDOW_HEIGHT); // proporção 
+glEnable(GL_BLEND);
+glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
+glDepthMask(GL_FALSE);
 
-	glPushMatrix();
-	glTranslatef(cam->eye.x,OBJECTO_ALTURA,cam->eye.z);
-	glColor4f(0,0,1,0.2);
-	glRotatef(GRAUS(cam->dir_long),0,1,0);
+glPushMatrix();
+glTranslatef(cam->eye.x,OBJECTO_ALTURA,cam->eye.z);
+glColor4f(0,0,1,0.2);
+glRotatef(GRAUS(cam->dir_long),0,1,0);
 
-	glBegin(GL_TRIANGLES);
-	glVertex3f(0,0,0);
-	glVertex3f(5*cos(RAD(cam->fov*ratio*0.5)),0,-5*sin(RAD(cam->fov*ratio*0.5)));
-	glVertex3f(5*cos(RAD(cam->fov*ratio*0.5)),0,5*sin(RAD(cam->fov*ratio*0.5)));
-	glEnd();
-	glPopMatrix();
+glBegin(GL_TRIANGLES);
+glVertex3f(0,0,0);
+glVertex3f(5*cos(RAD(cam->fov*ratio*0.5)),0,-5*sin(RAD(cam->fov*ratio*0.5)));
+glVertex3f(5*cos(RAD(cam->fov*ratio*0.5)),0,5*sin(RAD(cam->fov*ratio*0.5)));
+glEnd();
+glPopMatrix();
 
-	glDepthMask(GL_TRUE);
-	glDisable(GL_BLEND);
+glDepthMask(GL_TRUE);
+glDisable(GL_BLEND);
 }
-
+*/
+//janela direita
 void setNavigateSubwindowCamera(camera_t *cam, objecto_t obj)
 {
 
@@ -48,11 +49,17 @@ void setNavigateSubwindowCamera(camera_t *cam, objecto_t obj)
 	if(estado.vista[JANELA_NAVIGATE])
 	{
 	*/
-	cam->eye.x=obj.pos.x-1;
-	cam->eye.y=obj.pos.y+.2;
-	cam->eye.z=obj.pos.z-1;
-	center.x=obj.pos.x;
-	center.y=obj.pos.y+.2;
+	if(gordon.andarFrente)
+		cam->eye.x=obj.pos.x+0.3;
+	else
+		cam->eye.x=obj.pos.x-0.3;
+	cam->eye.y=obj.pos.y+OBJECTO_ALTURA;
+	cam->eye.z=obj.pos.z;
+	if(gordon.andarFrente)
+		center.x=obj.pos.x+1;
+	else
+		center.x=obj.pos.x-1;
+	center.y=obj.pos.y+OBJECTO_ALTURA/2;
 	center.z=obj.pos.z;
 	/*
 	}
@@ -67,18 +74,19 @@ void setNavigateSubwindowCamera(camera_t *cam, objecto_t obj)
 
 /////////////////////////////////////
 //topSubwindow
+//janela esquerda
 void setTopSubwindowCamera( camera_t *cam,objecto_t obj)
 {
 	pos_t center;
 
 	cam->eye.x=obj.pos.x;
 	cam->eye.y=3;
-	cam->eye.z=obj.pos.z+8;
+	cam->eye.z=obj.pos.z+6;
 	center.x=obj.pos.x;
 	center.y=3;
 	center.z=obj.pos.z;
 	//if(estado.vista[JANELA_TOP])
-		gluLookAt(cam->eye.x,cam->eye.y,cam->eye.z,center.x,center.y,center.z,0,1,0);
+	gluLookAt(cam->eye.x,cam->eye.y,cam->eye.z,center.x,center.y,center.z,0,1,0);
 	//else
-		//gluLookAt(obj.pos.x,CHAO_DIMENSAO*2,obj.pos.z,obj.pos.x,obj.pos.y,obj.pos.z,0,0,-1);
+	//gluLookAt(obj.pos.x,CHAO_DIMENSAO*2,obj.pos.z,obj.pos.x,obj.pos.y,obj.pos.z,0,0,-1);
 }

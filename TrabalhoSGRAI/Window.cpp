@@ -100,7 +100,7 @@ void displayTopSubwindow()
 			glPopMatrix();
 		}
 
-	desenhaAngVisao(&estado.camera1);
+	//desenhaAngVisao(&estado.camera1);
 	glutSwapBuffers();
 }
 
@@ -126,7 +126,7 @@ void displayNavigateSubwindow()
 		mdlviewer_display(gordon.stdModel[JANELA_NAVIGATE]);
 		glPopMatrix();
 
-		desenhaBoundingBox();
+		//desenhaBoundingBox();
 
 		GLint x=2;
 
