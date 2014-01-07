@@ -18,21 +18,30 @@
 
 void setLight()
 {	
-	GLfloat light_pos[4] =	{-5.0, 20.0, -8.0, 0.0};
+	GLfloat light_pos[4] =	{80.0, 100.0, 170.0, 0.0};
 	GLfloat light_ambient[] = { 0.2f, 0.2f, 0.2f, 1.0f };
 	GLfloat light_diffuse[] = { 0.8f, 0.8f, 0.8f, 1.0f };
 	GLfloat light_specular[]=	{ 0.5f, 0.5f, 0.5f, 1.0f };
 
 	// ligar iluminação
 	glEnable(GL_LIGHTING);
-
+	
 	// ligar e definir fonte de luz 0
 	glEnable(GL_LIGHT0);
 	glLightfv(GL_LIGHT0, GL_AMBIENT, light_ambient);
 	glLightfv(GL_LIGHT0, GL_DIFFUSE, light_diffuse);
 	glLightfv(GL_LIGHT0, GL_SPECULAR, light_specular);
 	glLightfv(GL_LIGHT0, GL_POSITION, light_pos);
+	
+	//ligar e definir fonte de luz 1
+	GLfloat light_pos2[4] =	{80.0, 100.0, -170.0, 0.0};
 
+	glEnable(GL_LIGHT1);
+	glLightfv(GL_LIGHT1, GL_AMBIENT, light_ambient);
+	glLightfv(GL_LIGHT1, GL_DIFFUSE, light_diffuse);
+	glLightfv(GL_LIGHT1, GL_SPECULAR, light_specular);
+	glLightfv(GL_LIGHT1, GL_POSITION, light_pos2);
+	
 	glLightModeli(GL_LIGHT_MODEL_LOCAL_VIEWER,estado.localViewer);
 }
 

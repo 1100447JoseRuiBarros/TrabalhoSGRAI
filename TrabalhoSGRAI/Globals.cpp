@@ -15,6 +15,7 @@ Model gordon;
 Model headCrabs[3];
 
 GLUquadric* quad=gluNewQuadric();
+GLuint *skybox = new GLuint[6];
 
 char chao_mapa[ALT_CHAO][COMP_CHAO+1] = {
 	"*                                                                                                                                          *",

@@ -41,6 +41,194 @@ void strokeCenterString(char *str,double x, double y, double z, double s)
 
 }
 
+///////////////////////////////////
+/// Texturas
+
+AUX_RGBImageRec *LoadBMP(char *Filename)				// Loads A Bitmap Image
+{
+	FILE *File=NULL;									// File Handle
+
+	if (!Filename)										// Make Sure A Filename Was Given
+	{
+		return NULL;									// If Not Return NULL
+	}
+
+	File=fopen(Filename,"r");							// Check To See If The File Exists
+
+	if (File)											// Does The File Exist?
+	{
+		fclose(File);									// Close The Handle
+		return auxDIBImageLoad(Filename);				// Load The Bitmap And Return A Pointer
+	}
+
+	return NULL;										// If Load Failed Return NULL
+}
+
+void createTextures(GLuint texID[])
+{
+	AUX_RGBImageRec *TextureImage;
+
+	glGenTextures(NUM_TEXTURAS,texID);
+
+	glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
+	//glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE,GL_REPLACE);
+	//cubos do chão
+	if (TextureImage=LoadBMP(NOME_TEXTURA_CUBOS))
+	{
+		glBindTexture(GL_TEXTURE_2D, texID[ID_TEXTURA_CUBOS]);
+		glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);	
+		glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
+
+		gluBuild2DMipmaps(GL_TEXTURE_2D, 3, TextureImage->sizeX, TextureImage->sizeY, GL_RGB, GL_UNSIGNED_BYTE, TextureImage->data);
+	}
+	else
+	{
+		printf("Textura %s not Found\n",NOME_TEXTURA_CUBOS);
+		exit(0);
+	}
+	//cubos das plataformas
+	if (TextureImage=LoadBMP(NOME_TEXTURA_PLATAFORMAS))
+	{
+		glBindTexture(GL_TEXTURE_2D, texID[ID_TEXTURA_PLATAFORMAS]);
+		glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);	
+		glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
+
+		gluBuild2DMipmaps(GL_TEXTURE_2D, 3, TextureImage->sizeX, TextureImage->sizeY, GL_RGB, GL_UNSIGNED_BYTE, TextureImage->data);
+	}
+	else
+	{
+		printf("Textura %s not Found\n",NOME_TEXTURA_PLATAFORMAS);
+		exit(0);
+	}
+	//cubos das escadas
+	if (TextureImage=LoadBMP(NOME_TEXTURA_ESCADAS))
+	{
+		glBindTexture(GL_TEXTURE_2D, texID[ID_TEXTURA_ESCADAS]);
+		glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);	
+		glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
+
+		gluBuild2DMipmaps(GL_TEXTURE_2D, 3, TextureImage->sizeX, TextureImage->sizeY, GL_RGB, GL_UNSIGNED_BYTE, TextureImage->data);
+	}
+	else
+	{
+		printf("Textura %s not Found\n",NOME_TEXTURA_ESCADAS);
+		exit(0);
+	}
+	//cilindros dos pipes
+	if (TextureImage=LoadBMP(NOME_TEXTURA_PIPES))
+	{
+		glBindTexture(GL_TEXTURE_2D, texID[ID_TEXTURA_PIPES]);
+		glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);	
+		glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
+
+		gluBuild2DMipmaps(GL_TEXTURE_2D, 3, TextureImage->sizeX, TextureImage->sizeY, GL_RGB, GL_UNSIGNED_BYTE, TextureImage->data);
+	}
+	else
+	{
+		printf("Textura %s not Found\n",NOME_TEXTURA_PIPES);
+		exit(0);
+	}
+	
+	glBindTexture(GL_TEXTURE_2D, NULL);
+}
+
+void createTexturesSkybox()
+{
+	AUX_RGBImageRec *TextureImage;
+
+	glGenTextures(NUM_TEXTURAS_SKYBOX,skybox);
+
+	glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
+	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE,GL_MODULATE);
+
+	//skybox 1
+	if (TextureImage=LoadBMP(SKYBOX1))
+	{
+		glBindTexture(GL_TEXTURE_2D, skybox[ID_SKYBOX1]);
+		glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);	
+		glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
+
+		gluBuild2DMipmaps(GL_TEXTURE_2D, 3, TextureImage->sizeX, TextureImage->sizeY, GL_RGB, GL_UNSIGNED_BYTE, TextureImage->data);
+	}
+	else
+	{
+		printf("Textura %s not Found\n",SKYBOX1);
+		exit(0);
+	}
+	//skybox 2
+	if (TextureImage=LoadBMP(SKYBOX2))
+	{
+		glBindTexture(GL_TEXTURE_2D, skybox[ID_SKYBOX2]);
+		glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);	
+		glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
+
+		gluBuild2DMipmaps(GL_TEXTURE_2D, 3, TextureImage->sizeX, TextureImage->sizeY, GL_RGB, GL_UNSIGNED_BYTE, TextureImage->data);
+	}
+	else
+	{
+		printf("Textura %s not Found\n",SKYBOX2);
+		exit(0);
+	}
+	//skybox 3
+	if (TextureImage=LoadBMP(SKYBOX3))
+	{
+		glBindTexture(GL_TEXTURE_2D, skybox[ID_SKYBOX3]);
+		glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);	
+		glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
+
+		gluBuild2DMipmaps(GL_TEXTURE_2D, 3, TextureImage->sizeX, TextureImage->sizeY, GL_RGB, GL_UNSIGNED_BYTE, TextureImage->data);
+	}
+	else
+	{
+		printf("Textura %s not Found\n",SKYBOX3);
+		exit(0);
+	}
+	//skybox 4
+	if (TextureImage=LoadBMP(SKYBOX4))
+	{
+		glBindTexture(GL_TEXTURE_2D, skybox[ID_SKYBOX4]);
+		glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);	
+		glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
+
+		gluBuild2DMipmaps(GL_TEXTURE_2D, 3, TextureImage->sizeX, TextureImage->sizeY, GL_RGB, GL_UNSIGNED_BYTE, TextureImage->data);
+	}
+	else
+	{
+		printf("Textura %s not Found\n",SKYBOX4);
+		exit(0);
+	}
+	//skybox 5
+	if (TextureImage=LoadBMP(SKYBOX5))
+	{
+		glBindTexture(GL_TEXTURE_2D, skybox[ID_SKYBOX5]);
+		glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);	
+		glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
+
+		gluBuild2DMipmaps(GL_TEXTURE_2D, 3, TextureImage->sizeX, TextureImage->sizeY, GL_RGB, GL_UNSIGNED_BYTE, TextureImage->data);
+	}
+	else
+	{
+		printf("Textura %s not Found\n",SKYBOX5);
+		exit(0);
+	}
+	//skybox 6
+	if (TextureImage=LoadBMP(SKYBOX6))
+	{
+		glBindTexture(GL_TEXTURE_2D, skybox[ID_SKYBOX6]);
+		glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);	
+		glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
+
+		gluBuild2DMipmaps(GL_TEXTURE_2D, 3, TextureImage->sizeX, TextureImage->sizeY, GL_RGB, GL_UNSIGNED_BYTE, TextureImage->data);
+	}
+	else
+	{
+		printf("Textura %s not Found\n",SKYBOX6);
+		exit(0);
+	}
+
+	glBindTexture(GL_TEXTURE_2D, NULL);
+}
+
 /////////////////////////////////////
 //Modelo
 
@@ -49,7 +237,7 @@ void strokeCenterString(char *str,double x, double y, double z, double s)
 void desenhaPoligono(GLfloat a[], GLfloat b[], GLfloat c[], GLfloat  d[], GLfloat normal[])
 {
     glBegin(GL_POLYGON);
-		glColor3f(5.0f,5.0f,5.0f);
+		glColor3f(0.5f,0.5f,0.5f);
         glNormal3fv(normal);
 		glTexCoord2f(0.0f, 0.0f);
         glVertex3fv(a);
@@ -64,6 +252,7 @@ void desenhaPoligono(GLfloat a[], GLfloat b[], GLfloat c[], GLfloat  d[], GLfloa
 
 void desenhaCubo()
 {
+	
   GLfloat vertices[][3] = { {-0.5,-0.5,-0.5}, 
 							{0.5,-0.5,-0.5}, 
 							{0.5,0.5,-0.5}, 
@@ -82,12 +271,13 @@ void desenhaCubo()
 							{0,-1,0}
 							};
 
-  desenhaPoligono(vertices[1],vertices[0],vertices[3],vertices[2],normais[0]);
-  desenhaPoligono(vertices[2],vertices[3],vertices[7],vertices[6],normais[1]);
-  desenhaPoligono(vertices[3],vertices[0],vertices[4],vertices[7],normais[2]);
-  desenhaPoligono(vertices[6],vertices[5],vertices[1],vertices[2],normais[3]);
-  desenhaPoligono(vertices[4],vertices[5],vertices[6],vertices[7],normais[4]);
-  desenhaPoligono(vertices[5],vertices[4],vertices[0],vertices[1],normais[5]);
+  desenhaPoligono(vertices[1],vertices[0],vertices[3],vertices[2],normais[0]);//tras
+  desenhaPoligono(vertices[2],vertices[3],vertices[7],vertices[6],normais[1]);//cima
+  desenhaPoligono(vertices[3],vertices[0],vertices[4],vertices[7],normais[2]);//esquerda
+  desenhaPoligono(vertices[6],vertices[5],vertices[1],vertices[2],normais[3]);//direita
+  desenhaPoligono(vertices[4],vertices[5],vertices[6],vertices[7],normais[4]);//frente
+  desenhaPoligono(vertices[5],vertices[4],vertices[0],vertices[1],normais[5]);//baixo
+  
 }
 
 void desenhachao(GLuint texID)
@@ -140,7 +330,7 @@ void desenhapips(GLuint texID)
 					glTranslatef(x-1,y,0);
 					glRotatef(90,1,0,0);
 					glRotatef(180,0,0,1);
-					glColor3f(5.0,5.0,5.0);
+					//glColor3f(0.5f,0.5f,0.5f);
 					gluQuadricTexture(quad,1);
 					gluCylinder(quad,0.5,0.5,1,20,2);
 				glPopMatrix();
@@ -232,71 +422,84 @@ void desenhaplataformas(GLuint texID)
 
 void desenhaskybox()
 {
-    glPushMatrix();
+	createTexturesSkybox();
 
+	GLfloat normais[][3] = {	{0,0,-1},
+							{0,1,0},
+							{-1,0,0},
+							{1,0,0},
+							{0,0,1},
+							{0,-1,0}
+							};
+
+    glPushMatrix();
+	
 	glTranslatef(70,0,0);
-    // Render the front quad
-    glBindTexture(GL_TEXTURE_2D, ID_SKYBOX1);
 	glScalef(180.0f,180.0f,180.0f);
-	glColor3f(5.0f,5.0f,5.0f);
+	glColor3f(0.5f,0.5f,0.5f);
+	//face de tras
+	glBindTexture(GL_TEXTURE_2D, skybox[ID_SKYBOX6]);
     glBegin(GL_QUADS);
+		glNormal3fv(normais[4]);
         glTexCoord2f(0, 0); glVertex3f(  0.5f, -0.5f, -0.5f );
         glTexCoord2f(1, 0); glVertex3f( -0.5f, -0.5f, -0.5f );
         glTexCoord2f(1, 1); glVertex3f( -0.5f,  0.5f, -0.5f );
         glTexCoord2f(0, 1); glVertex3f(  0.5f,  0.5f, -0.5f );
     glEnd();
- 
-    // Render the left quad
-    glBindTexture(GL_TEXTURE_2D, ID_SKYBOX2);
+	glBindTexture(GL_TEXTURE_2D, NULL);
+    //face da direita
+    glBindTexture(GL_TEXTURE_2D, skybox[ID_SKYBOX1]);
     glBegin(GL_QUADS);
+		glNormal3fv(normais[3]);
         glTexCoord2f(0, 0); glVertex3f(  0.5f, -0.5f,  0.5f );
         glTexCoord2f(1, 0); glVertex3f(  0.5f, -0.5f, -0.5f );
         glTexCoord2f(1, 1); glVertex3f(  0.5f,  0.5f, -0.5f );
         glTexCoord2f(0, 1); glVertex3f(  0.5f,  0.5f,  0.5f );
     glEnd();
- 
-    // Render the back quad
-    glBindTexture(GL_TEXTURE_2D, ID_SKYBOX3);
+	glBindTexture(GL_TEXTURE_2D, NULL);
+    //face da frente
+    glBindTexture(GL_TEXTURE_2D, skybox[ID_SKYBOX2]);
     glBegin(GL_QUADS);
+		glNormal3fv(normais[4]);
         glTexCoord2f(0, 0); glVertex3f( -0.5f, -0.5f,  0.5f );
         glTexCoord2f(1, 0); glVertex3f(  0.5f, -0.5f,  0.5f );
         glTexCoord2f(1, 1); glVertex3f(  0.5f,  0.5f,  0.5f );
         glTexCoord2f(0, 1); glVertex3f( -0.5f,  0.5f,  0.5f );
- 
     glEnd();
- 
-    // Render the right quad
-    glBindTexture(GL_TEXTURE_2D, ID_SKYBOX4);
+	glBindTexture(GL_TEXTURE_2D, NULL);
+    //face da esquerda
+	glBindTexture(GL_TEXTURE_2D, skybox[ID_SKYBOX3]);
     glBegin(GL_QUADS);
+		glNormal3fv(normais[3]);
         glTexCoord2f(0, 0); glVertex3f( -0.5f, -0.5f, -0.5f );
         glTexCoord2f(1, 0); glVertex3f( -0.5f, -0.5f,  0.5f );
         glTexCoord2f(1, 1); glVertex3f( -0.5f,  0.5f,  0.5f );
         glTexCoord2f(0, 1); glVertex3f( -0.5f,  0.5f, -0.5f );
     glEnd();
- 
-    // Render the top quad
-    glBindTexture(GL_TEXTURE_2D, ID_SKYBOX5);
+	glBindTexture(GL_TEXTURE_2D, NULL);
+    //face de cima
+	glBindTexture(GL_TEXTURE_2D, skybox[ID_SKYBOX4]);
     glBegin(GL_QUADS);
+		glNormal3fv(normais[1]);
         glTexCoord2f(0, 1); glVertex3f( -0.5f,  0.5f, -0.5f );
         glTexCoord2f(0, 0); glVertex3f( -0.5f,  0.5f,  0.5f );
         glTexCoord2f(1, 0); glVertex3f(  0.5f,  0.5f,  0.5f );
         glTexCoord2f(1, 1); glVertex3f(  0.5f,  0.5f, -0.5f );
     glEnd();
- 
-    // Render the bottom quad
-    glBindTexture(GL_TEXTURE_2D, ID_SKYBOX6);
+	glBindTexture(GL_TEXTURE_2D, NULL);
+    //face de baixo
+    glBindTexture(GL_TEXTURE_2D, skybox[ID_SKYBOX5]);
     glBegin(GL_QUADS);
+		glNormal3fv(normais[1]);
         glTexCoord2f(0, 0); glVertex3f( -0.5f, -0.5f, -0.5f );
         glTexCoord2f(0, 1); glVertex3f( -0.5f, -0.5f,  0.5f );
         glTexCoord2f(1, 1); glVertex3f(  0.5f, -0.5f,  0.5f );
         glTexCoord2f(1, 0); glVertex3f(  0.5f, -0.5f, -0.5f );
     glEnd();
- 
+	glBindTexture(GL_TEXTURE_2D, NULL);
     // Restore enable bits and matrix
     glPopAttrib();
     glPopMatrix();
-
-	glBindTexture(GL_TEXTURE_2D, NULL);
 }
 
 //void desenhaModelo()
@@ -366,180 +569,6 @@ void createDisplayLists(int janelaID)
 	desenhaplataformas(modelo.texID[janelaID][ID_TEXTURA_PLATAFORMAS]);
 	glPopAttrib();
 	glEndList();
-}
-
-
-///////////////////////////////////
-/// Texturas
-
-AUX_RGBImageRec *LoadBMP(char *Filename)				// Loads A Bitmap Image
-{
-	FILE *File=NULL;									// File Handle
-
-	if (!Filename)										// Make Sure A Filename Was Given
-	{
-		return NULL;									// If Not Return NULL
-	}
-
-	File=fopen(Filename,"r");							// Check To See If The File Exists
-
-	if (File)											// Does The File Exist?
-	{
-		fclose(File);									// Close The Handle
-		return auxDIBImageLoad(Filename);				// Load The Bitmap And Return A Pointer
-	}
-
-	return NULL;										// If Load Failed Return NULL
-}
-
-void createTextures(GLuint texID[])
-{
-	AUX_RGBImageRec *TextureImage;
-
-	glGenTextures(NUM_TEXTURAS,texID);
-
-	//cubos do chão
-	if (TextureImage=LoadBMP(NOME_TEXTURA_CUBOS))
-	{
-		glBindTexture(GL_TEXTURE_2D, texID[ID_TEXTURA_CUBOS]);
-		glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);	
-		glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
-
-		gluBuild2DMipmaps(GL_TEXTURE_2D, 3, TextureImage->sizeX, TextureImage->sizeY, GL_RGB, GL_UNSIGNED_BYTE, TextureImage->data);
-	}
-	else
-	{
-		printf("Textura %s not Found\n",NOME_TEXTURA_CUBOS);
-		exit(0);
-	}
-	//cubos das plataformas
-	if (TextureImage=LoadBMP(NOME_TEXTURA_PLATAFORMAS))
-	{
-		glBindTexture(GL_TEXTURE_2D, texID[ID_TEXTURA_PLATAFORMAS]);
-		glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);	
-		glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
-
-		gluBuild2DMipmaps(GL_TEXTURE_2D, 3, TextureImage->sizeX, TextureImage->sizeY, GL_RGB, GL_UNSIGNED_BYTE, TextureImage->data);
-	}
-	else
-	{
-		printf("Textura %s not Found\n",NOME_TEXTURA_PLATAFORMAS);
-		exit(0);
-	}
-	//cubos das escadas
-	if (TextureImage=LoadBMP(NOME_TEXTURA_ESCADAS))
-	{
-		glBindTexture(GL_TEXTURE_2D, texID[ID_TEXTURA_ESCADAS]);
-		glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);	
-		glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
-
-		gluBuild2DMipmaps(GL_TEXTURE_2D, 3, TextureImage->sizeX, TextureImage->sizeY, GL_RGB, GL_UNSIGNED_BYTE, TextureImage->data);
-	}
-	else
-	{
-		printf("Textura %s not Found\n",NOME_TEXTURA_ESCADAS);
-		exit(0);
-	}
-	//cilindros dos pipes
-	if (TextureImage=LoadBMP(NOME_TEXTURA_PIPES))
-	{
-		glBindTexture(GL_TEXTURE_2D, texID[ID_TEXTURA_PIPES]);
-		glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);	
-		glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
-
-		gluBuild2DMipmaps(GL_TEXTURE_2D, 3, TextureImage->sizeX, TextureImage->sizeY, GL_RGB, GL_UNSIGNED_BYTE, TextureImage->data);
-	}
-	else
-	{
-		printf("Textura %s not Found\n",NOME_TEXTURA_PIPES);
-		exit(0);
-	}
-	//skybox 1
-	if (TextureImage=LoadBMP(SKYBOX1))
-	{
-		glBindTexture(GL_TEXTURE_2D, texID[ID_SKYBOX1]);
-		glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);	
-		glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
-
-		gluBuild2DMipmaps(GL_TEXTURE_2D, 3, TextureImage->sizeX, TextureImage->sizeY, GL_RGB, GL_UNSIGNED_BYTE, TextureImage->data);
-	}
-	else
-	{
-		printf("Textura %s not Found\n",SKYBOX1);
-		exit(0);
-	}
-	//skybox 2
-	if (TextureImage=LoadBMP(SKYBOX2))
-	{
-		glBindTexture(GL_TEXTURE_2D, texID[ID_SKYBOX2]);
-		glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);	
-		glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
-
-		gluBuild2DMipmaps(GL_TEXTURE_2D, 3, TextureImage->sizeX, TextureImage->sizeY, GL_RGB, GL_UNSIGNED_BYTE, TextureImage->data);
-	}
-	else
-	{
-		printf("Textura %s not Found\n",SKYBOX2);
-		exit(0);
-	}
-	//skybox 3
-	if (TextureImage=LoadBMP(SKYBOX3))
-	{
-		glBindTexture(GL_TEXTURE_2D, texID[ID_SKYBOX3]);
-		glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);	
-		glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
-
-		gluBuild2DMipmaps(GL_TEXTURE_2D, 3, TextureImage->sizeX, TextureImage->sizeY, GL_RGB, GL_UNSIGNED_BYTE, TextureImage->data);
-	}
-	else
-	{
-		printf("Textura %s not Found\n",SKYBOX3);
-		exit(0);
-	}
-	//skybox 4
-	if (TextureImage=LoadBMP(SKYBOX4))
-	{
-		glBindTexture(GL_TEXTURE_2D, texID[ID_SKYBOX4]);
-		glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);	
-		glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
-
-		gluBuild2DMipmaps(GL_TEXTURE_2D, 3, TextureImage->sizeX, TextureImage->sizeY, GL_RGB, GL_UNSIGNED_BYTE, TextureImage->data);
-	}
-	else
-	{
-		printf("Textura %s not Found\n",SKYBOX4);
-		exit(0);
-	}
-	//skybox 5
-	if (TextureImage=LoadBMP(SKYBOX5))
-	{
-		glBindTexture(GL_TEXTURE_2D, texID[ID_SKYBOX5]);
-		glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);	
-		glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
-
-		gluBuild2DMipmaps(GL_TEXTURE_2D, 3, TextureImage->sizeX, TextureImage->sizeY, GL_RGB, GL_UNSIGNED_BYTE, TextureImage->data);
-	}
-	else
-	{
-		printf("Textura %s not Found\n",SKYBOX5);
-		exit(0);
-	}
-	//skybox 6
-	if (TextureImage=LoadBMP(SKYBOX6))
-	{
-		glBindTexture(GL_TEXTURE_2D, texID[ID_SKYBOX6]);
-		glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);	
-		glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
-
-		gluBuild2DMipmaps(GL_TEXTURE_2D, 3, TextureImage->sizeX, TextureImage->sizeY, GL_RGB, GL_UNSIGNED_BYTE, TextureImage->data);
-	}
-	else
-	{
-		printf("Textura %s not Found\n",SKYBOX6);
-		exit(0);
-	}
-
-	glBindTexture(GL_TEXTURE_2D, NULL);
 }
 
 void init()

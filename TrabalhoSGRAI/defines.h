@@ -31,18 +31,19 @@
 #define SKYBOX5						"s5.bmp"
 #define SKYBOX6						"s6.bmp"
 
-#define NUM_TEXTURAS            10
+#define NUM_TEXTURAS            4
+#define NUM_TEXTURAS_SKYBOX		6
 
 #define ID_TEXTURA_CUBOS		0
 #define ID_TEXTURA_PLATAFORMAS	1
 #define ID_TEXTURA_ESCADAS		2
 #define ID_TEXTURA_PIPES		3
-#define ID_SKYBOX1				4
-#define ID_SKYBOX2				5
-#define ID_SKYBOX3				6
-#define ID_SKYBOX4				7
-#define ID_SKYBOX5				8
-#define ID_SKYBOX6				9
+#define ID_SKYBOX1				0
+#define ID_SKYBOX2				1
+#define ID_SKYBOX3				2
+#define ID_SKYBOX4				3
+#define ID_SKYBOX5				4
+#define ID_SKYBOX6				5
 
 #define	CHAO_DIMENSAO		    10
 
