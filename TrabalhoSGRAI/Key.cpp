@@ -29,14 +29,6 @@ void Key(unsigned char key, int x, int y)
 	case 27:
 		exit(1);
 		break;
-	case 'h' :
-	case 'H' :
-		//imprime_ajuda();
-		break;
-	case 'l':
-	case 'L':
-		estado.localViewer=!estado.localViewer;
-		break;
 	case 'w':
 	case 'W':
 		glutSetWindow(estado.navigateSubwindow);

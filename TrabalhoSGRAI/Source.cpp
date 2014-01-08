@@ -570,23 +570,18 @@ void mouseNavigateSubwindow(int button, int state, int x, int y)
 
 void imprime_ajuda(void)
 {
-	printf("\n\nDesenho de um quadrado\n");
-	printf("h,H - Ajuda \n");
+	printf("\n\n			Super Gordon Freeman \n\n");
 	printf("******* Diversos ******* \n");
-	printf("l,L - Alterna o calculo luz entre Z e eye (GL_LIGHT_MODEL_LOCAL_VIEWER)\n");
 	printf("w,W - Wireframe \n");
 	printf("f,F - Fill \n");
-	printf("******* Movimento ******* \n");
-	printf("up  - Acelera \n");
-	printf("down- Trava \n");
-	printf("left- Vira rodas para a direita\n");
-	printf("righ- Vira rodas para a esquerda\n");
-	printf("******* Camara ******* \n");
-	printf("F1 - Alterna camara da janela da Esquerda \n");
-	printf("F2 - Alterna camara da janela da Direita \n");
-	printf("PAGE_UP, PAGE_DOWN - Altera abertura da camara \n");
-	printf("botao esquerdo + movimento na Janela da Direita altera o olhar \n");
 	printf("ESC - Sair\n");
+	printf("******* Movimento ******* \n");
+	printf("righ- Andar para a frente \n");
+	printf("left- Andar para tras \n");
+	printf("F3 - Correr \n");
+	printf("F4 - Saltar \n");
+	printf("******* Camara ******* \n");
+	printf("left mouse - Permite mover a camara com o movimento do rato \n");
 }
 
 ////////////////////////////////////
@@ -662,9 +657,9 @@ int main(int argc, char **argv)
 {
 	glutInit(&argc, argv);
 	glutInitWindowPosition(10, 10);
-	glutInitWindowSize(800+GAP*3, 400+GAP*2);
+	glutInitWindowSize(900+GAP*3, 500+GAP*2);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
-	if ((estado.mainWindow=glutCreateWindow("Labirinto")) == GL_FALSE)
+	if ((estado.mainWindow=glutCreateWindow("Super Gordon Freeman")) == GL_FALSE)
 		exit(1);
 
 	imprime_ajuda();
