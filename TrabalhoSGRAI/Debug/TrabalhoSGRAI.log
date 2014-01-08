@@ -1,13 +1,16 @@
-﻿Build started 08-01-2014 17:00:30.
+﻿Build started 08-01-2014 17:29:44.
      1>Project "C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\TrabalhoSGRAI\TrabalhoSGRAI.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12 Express\VC\bin\CL.exe /c /I"C:\Program Files (x86)\OpenAL 1.1 SDK\include" /I"C:\Program Files (x86)\freealut-1.1.0-bin\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _CRT_SECURE_NO_WARNINGS /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Source.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12 Express\VC\bin\CL.exe /c /I"C:\Program Files (x86)\OpenAL 1.1 SDK\include" /I"C:\Program Files (x86)\freealut-1.1.0-bin\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _CRT_SECURE_NO_WARNINGS /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Init.cpp Source.cpp
          Source.cpp
+         Init.cpp
+         Generating Code...
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 12 Express\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\Debug\TrabalhoSGRAI.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Program Files (x86)\OpenAL 1.1 SDK\libs\Win32" /LIBPATH:"C:\Program Files (x86)\freealut-1.1.0-bin\lib" alut.lib OpenAL32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\Debug\TrabalhoSGRAI.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\Debug\TrabalhoSGRAI.lib" /MACHINE:X86 Debug\Camera.obj
          Debug\Colisao.obj
          Debug\Globals.obj
          Debug\Illumination.obj
+         Debug\Init.obj
          Debug\Key.obj
          Debug\math.obj
          Debug\mdlviewer.obj
@@ -20,9 +23,10 @@
          Debug\Window.obj
          GlAux.Lib
          libjpeg.lib
+         LINK : C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\Debug\TrabalhoSGRAI.exe not found or not built by the last incremental link; performing full link
          TrabalhoSGRAI.vcxproj -> C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\Debug\TrabalhoSGRAI.exe
      1>Done Building Project "C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\TrabalhoSGRAI\TrabalhoSGRAI.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:04.96
+Time Elapsed 00:00:06.72

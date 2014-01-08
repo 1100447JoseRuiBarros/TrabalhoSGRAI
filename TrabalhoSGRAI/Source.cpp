@@ -20,6 +20,7 @@
 #include "Window.h"
 #include "Illumination.h"
 #include "Timer.h"
+#include "Init.h"
 
 #pragma comment (lib, "glaux.lib")    /* link with Win32 GLAUX lib usada para ler bitmaps */
 
@@ -605,51 +606,6 @@ void createDisplayLists(int janelaID)
 	desenhaplataformas(modelo.texID[janelaID][ID_TEXTURA_PLATAFORMAS]);
 	glPopAttrib();
 	glEndList();
-}
-
-void init()
-{
-	GLfloat amb[] = { 0.3f, 0.3f, 0.3f, 1.0f };
-
-	estado.timer=100;	
-
-	/*estado.camera.eye.x=0;
-	estado.camera.eye.y=OBJECTO_ALTURA*2;
-	estado.camera.eye.z=0;*/
-	estado.camera1.fov=60;
-	estado.camera2.fov=60;
-	estado.camera2.dir_long=0;
-	estado.camera2.dir_lat=0;
-
-	estado.localViewer=1;
-	estado.vista[JANELA_TOP]=0;
-	estado.vista[JANELA_NAVIGATE]=0;
-
-	gordon.objecto.pos.x=0;
-	gordon.objecto.pos.y=OBJECTO_ALTURA;
-	gordon.objecto.pos.z=0;
-	gordon.objecto.dir=0;
-	gordon.objecto.vel=OBJECTO_VELOCIDADE;
-	gordon.andarFrente=GL_TRUE;
-	gordon.saltar=GL_FALSE;
-
-	modelo.xMouse=modelo.yMouse=-1;
-
-	glEnable(GL_DEPTH_TEST);
-	glShadeModel(GL_SMOOTH);
-	glEnable(GL_POINT_SMOOTH);
-	glEnable(GL_LINE_SMOOTH);
-	glEnable(GL_POLYGON_SMOOTH);
-	glEnable(GL_TEXTURE_2D);
-	glEnable(GL_NORMALIZE);  // por causa do Scale ao Homer
-
-	if(glutGetWindow()==estado.mainWindow)
-		glClearColor(0.8f, 0.8f, 0.8f, 0.0f);
-	else
-		glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-
-	glLightModelfv(GL_LIGHT_MODEL_AMBIENT,amb);
-	
 }
 
 /////////////////////////////////////

@@ -81,6 +81,7 @@
     <ClCompile Include="Colisao.cpp" />
     <ClCompile Include="Globals.cpp" />
     <ClCompile Include="Illumination.cpp" />
+    <ClCompile Include="Init.cpp" />
     <ClCompile Include="Key.cpp" />
     <ClCompile Include="math.cpp" />
     <ClCompile Include="mdlviewer.cpp" />
@@ -101,6 +102,7 @@
     <ClInclude Include="Globals.h" />
     <ClInclude Include="GL\GLAux.h" />
     <ClInclude Include="Illumination.h" />
+    <ClInclude Include="Init.h" />
     <ClInclude Include="Key.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="MODELO.h" />
