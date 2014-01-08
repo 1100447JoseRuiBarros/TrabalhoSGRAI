@@ -56,11 +56,17 @@ void setNavigateSubwindowCamera(camera_t *cam, objecto_t obj)
 	cam->eye.y=obj.pos.y+OBJECTO_ALTURA;
 	cam->eye.z=obj.pos.z;
 	if(gordon.andarFrente)
-		center.x=obj.pos.x+1;
+	{
+		center.x=obj.pos.x+cos(cam->dir_long)*cos(cam->dir_lat);
+		center.y=cam->eye.y+sin(cam->dir_lat);
+		center.z=obj.pos.z+sin(-cam->dir_long)*cos(cam->dir_lat);
+	}
 	else
-		center.x=obj.pos.x-1;
-	center.y=obj.pos.y+OBJECTO_ALTURA/2;
-	center.z=obj.pos.z;
+	{
+		center.x=obj.pos.x-cos(cam->dir_long)*cos(cam->dir_lat);
+		center.y=cam->eye.y+sin(cam->dir_lat);
+		center.z=obj.pos.z-sin(-cam->dir_long)*cos(cam->dir_lat);
+	}
 	/*
 	}
 	else

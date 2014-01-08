@@ -47,7 +47,7 @@ void reshapeNavigateSubwindow(int width, int height)
 	// Matriz onde se define como o mundo e apresentado na janela
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();	
-	gluPerspective(estado.camera2.fov,(GLfloat)width/height,0.1,190);
+	gluPerspective(estado.camera2.fov,(GLfloat)width/height,0.1,220);
 	// Matriz Modelview
 	// Matriz onde são realizadas as tranformacoes dos modelos desenhados
 	glMatrixMode(GL_MODELVIEW);
