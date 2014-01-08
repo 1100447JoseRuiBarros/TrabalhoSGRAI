@@ -50,10 +50,10 @@ void setNavigateSubwindowCamera(camera_t *cam, objecto_t obj)
 	{
 	*/
 	if(gordon.andarFrente)
-		cam->eye.x=obj.pos.x+0.3;
+		cam->eye.x=obj.pos.x+0.25;
 	else
-		cam->eye.x=obj.pos.x-0.3;
-	cam->eye.y=obj.pos.y+OBJECTO_ALTURA;
+		cam->eye.x=obj.pos.x-0.25;
+	cam->eye.y=obj.pos.y+(OBJECTO_ALTURA+OBJECTO_ALTURA/4);
 	cam->eye.z=obj.pos.z;
 	if(gordon.andarFrente)
 	{

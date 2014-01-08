@@ -437,7 +437,7 @@ void desenhaskybox()
     glPushMatrix();
 	
 	glTranslatef(70,0,0);
-	glScalef(180.0f,180.0f,180.0f);
+	glScalef(2000.0f,2000.0f,2000.0f);
 	glColor3f(0.5f,0.5f,0.5f);
 	//face de tras
 	glBindTexture(GL_TEXTURE_2D, skybox[ID_SKYBOX6]);
