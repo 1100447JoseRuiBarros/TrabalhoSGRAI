@@ -81,12 +81,16 @@
     <ClCompile Include="Colisao.cpp" />
     <ClCompile Include="Globals.cpp" />
     <ClCompile Include="Illumination.cpp" />
+    <ClCompile Include="Init.cpp" />
     <ClCompile Include="Key.cpp" />
+    <ClCompile Include="Mapa.cpp" />
     <ClCompile Include="math.cpp" />
     <ClCompile Include="mdlviewer.cpp" />
     <ClCompile Include="Model.cpp" />
+    <ClCompile Include="Mouse.cpp" />
     <ClCompile Include="readjpeg.c" />
     <ClCompile Include="Source.cpp" />
+    <ClCompile Include="Texturas.cpp" />
     <ClCompile Include="Timer.cpp" />
     <ClCompile Include="studio_render.cpp" />
     <ClCompile Include="studio_utils.cpp" />
@@ -101,9 +105,12 @@
     <ClInclude Include="Globals.h" />
     <ClInclude Include="GL\GLAux.h" />
     <ClInclude Include="Illumination.h" />
+    <ClInclude Include="Init.h" />
     <ClInclude Include="Key.h" />
+    <ClInclude Include="Mapa.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="MODELO.h" />
+    <ClInclude Include="Mouse.h" />
     <ClInclude Include="objecto_t.h" />
     <ClInclude Include="pos_t.h" />
     <ClInclude Include="teclas_t.h" />
@@ -113,6 +120,7 @@
     <ClInclude Include="mathlib.h" />
     <ClInclude Include="mdlviewer.h" />
     <ClInclude Include="studio.h" />
+    <ClInclude Include="Texturas.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>

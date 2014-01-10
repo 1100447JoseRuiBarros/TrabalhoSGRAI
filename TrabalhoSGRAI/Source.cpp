@@ -20,13 +20,17 @@
 #include "Window.h"
 #include "Illumination.h"
 #include "Timer.h"
+#include "Init.h"
+#include "Texturas.h"
+#include "Mapa.h"
+#include "Mouse.h"
 
 #pragma comment (lib, "glaux.lib")    /* link with Win32 GLAUX lib usada para ler bitmaps */
 
 // função para ler jpegs do ficheiro readjpeg.c
 extern "C" int read_JPEG_file(const char *, char **, int *, int *, int *);
 
-
+/*
 void strokeCenterString(char *str,double x, double y, double z, double s)
 {
 	int i,n;
@@ -40,6 +44,7 @@ void strokeCenterString(char *str,double x, double y, double z, double s)
 	glPopMatrix();
 
 }
+<<<<<<< HEAD
 
 ///////////////////////////////////
 /// Texturas
@@ -530,26 +535,25 @@ void mouseNavigateSubwindow(int button, int state, int x, int y)
 {
 
 }
+=======
+*/
+>>>>>>> 98e6659b6f5604ffaf3b85ae64b916620dc9656d
 
 void imprime_ajuda(void)
 {
-	printf("\n\nDesenho de um quadrado\n");
-	printf("h,H - Ajuda \n");
+	printf("\n\n			Super Gordon Freeman \n\n");
 	printf("******* Diversos ******* \n");
-	printf("l,L - Alterna o calculo luz entre Z e eye (GL_LIGHT_MODEL_LOCAL_VIEWER)\n");
 	printf("w,W - Wireframe \n");
 	printf("f,F - Fill \n");
-	printf("******* Movimento ******* \n");
-	printf("up  - Acelera \n");
-	printf("down- Trava \n");
-	printf("left- Vira rodas para a direita\n");
-	printf("righ- Vira rodas para a esquerda\n");
-	printf("******* Camara ******* \n");
-	printf("F1 - Alterna camara da janela da Esquerda \n");
-	printf("F2 - Alterna camara da janela da Direita \n");
-	printf("PAGE_UP, PAGE_DOWN - Altera abertura da camara \n");
-	printf("botao esquerdo + movimento na Janela da Direita altera o olhar \n");
+	printf("c,C - Color \n");
 	printf("ESC - Sair\n");
+	printf("******* Movimento ******* \n");
+	printf("righ- Andar para a frente \n");
+	printf("left- Andar para tras \n");
+	printf("F3 - Correr \n");
+	printf("F4 - Saltar \n");
+	printf("******* Camara ******* \n");
+	printf("left mouse - Permite mover a camara com o movimento do rato \n");
 }
 
 ////////////////////////////////////
@@ -566,15 +570,12 @@ void createDisplayLists(int janelaID)
 	modelo.chao[janelaID]=modelo.labirinto[janelaID]+1;
 	glNewList(modelo.chao[janelaID], GL_COMPILE);
 	glPushAttrib(GL_COLOR_BUFFER_BIT | GL_CURRENT_BIT | GL_ENABLE_BIT );
-	desenhaskybox();
-	desenhachao(modelo.texID[janelaID][ID_TEXTURA_CUBOS]);
-	desenhapips(modelo.texID[janelaID][ID_TEXTURA_PIPES]);
-	desenhaescadas(modelo.texID[janelaID][ID_TEXTURA_ESCADAS]);
-	desenhaplataformas(modelo.texID[janelaID][ID_TEXTURA_PLATAFORMAS]);
+	constroicena(janelaID);
 	glPopAttrib();
 	glEndList();
 }
 
+<<<<<<< HEAD
 void init()
 {
 	GLfloat amb[] = { 0.3f, 0.3f, 0.3f, 1.0f };
@@ -621,14 +622,16 @@ void init()
 	
 }
 
+=======
+>>>>>>> 98e6659b6f5604ffaf3b85ae64b916620dc9656d
 /////////////////////////////////////
 int main(int argc, char **argv)
 {
 	glutInit(&argc, argv);
 	glutInitWindowPosition(10, 10);
-	glutInitWindowSize(800+GAP*3, 400+GAP*2);
+	glutInitWindowSize(900+GAP*3, 500+GAP*2);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
-	if ((estado.mainWindow=glutCreateWindow("Labirinto")) == GL_FALSE)
+	if ((estado.mainWindow=glutCreateWindow("Super Gordon Freeman")) == GL_FALSE)
 		exit(1);
 
 	imprime_ajuda();
@@ -649,6 +652,7 @@ int main(int argc, char **argv)
 	init();
 	setLight();
 	setMaterial();
+	createTexturesSkybox();
 	createTextures(modelo.texID[JANELA_TOP]);
 	createDisplayLists(JANELA_TOP);
 
@@ -671,6 +675,7 @@ int main(int argc, char **argv)
 	init();
 	setLight();
 	setMaterial();
+	createTexturesSkybox();
 
 	createTextures(modelo.texID[JANELA_NAVIGATE]);
 	createDisplayLists(JANELA_NAVIGATE);
