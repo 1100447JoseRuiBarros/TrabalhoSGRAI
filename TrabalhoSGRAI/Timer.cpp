@@ -32,12 +32,12 @@ void saltar(){
 		}
 		else{
 			gordon.saltar=GL_FALSE;
-			//gordon.cair=GL_TRUE;
+			gordon.cair=GL_TRUE;
 		}
 	}
 	else{
 		gordon.saltar=GL_FALSE;
-		//gordon.cair=GL_TRUE;
+		gordon.cair=GL_TRUE;
 	}
 }
 
@@ -50,7 +50,7 @@ void cair(){
 		gordon.cair=GL_TRUE; 
 	}
 	else{
-		//gordon.cair=GL_FALSE;
+		gordon.cair=GL_FALSE;
 		//gordon.objecto.pos.y+=0.25;
 	}
 }
@@ -69,7 +69,7 @@ void virarFrente(){
 		gordon.andar=GL_TRUE; 
 	}
 	/*else*/
-		//printf("Colidiu a andar para a direita lolololololol!\n");
+	//printf("Colidiu a andar para a direita lolololololol!\n");
 }
 
 void virarTras(){
@@ -90,9 +90,10 @@ void virarTras(){
 
 void setAnimacoes(){
 
-	if(gordon.andar=GL_FALSE && gordon.stdModel[JANELA_NAVIGATE].GetSequence()!=0){
-		gordon.stdModel[JANELA_NAVIGATE].SetSequence(0);
-		gordon.stdModel[JANELA_TOP].SetSequence(0);
+	if(gordon.andar=GL_FALSE && gordon.stdModel[JANELA_NAVIGATE].GetSequence()!=0
+		|| gordon.cair && gordon.stdModel[JANELA_NAVIGATE].GetSequence()!=0){
+			gordon.stdModel[JANELA_NAVIGATE].SetSequence(0);
+			gordon.stdModel[JANELA_TOP].SetSequence(0);
 	}
 
 	if( gordon.andar && !gordon.correr && gordon.stdModel[JANELA_NAVIGATE].GetSequence()!=4){
@@ -111,6 +112,18 @@ void setAnimacoes(){
 	}
 }
 
+bool verificaChao(){
+
+	ny=gordon.objecto.pos.y-gravidade;
+	if(!detectaColisao(nx,ny)){
+
+		return true; 
+	}
+	else
+		return false; 
+}
+
+
 void Timer(int value)
 {
 	GLuint curr = glutGet(GLUT_ELAPSED_TIME);
@@ -124,15 +137,11 @@ void Timer(int value)
 	glutTimerFunc(estado.timer, Timer, 0);
 	gordon.prev = curr;
 
-	/*gordon.correr=GL_FALSE;
-	gordon.andar=GL_FALSE;
-	gordon.saltar=GL_FALSE;
-	gordon.cair=GL_FALSE;*/
-
 	if(gordon.saltar)
 		saltar();
 	else
-		cair();
+		if(verificaChao()||gordon.cair)
+			cair();
 
 	if(estado.teclas.x && !gordon.saltar){
 		yInicial=gordon.objecto.pos.y;
@@ -148,8 +157,14 @@ void Timer(int value)
 		virarTras();
 	}
 
-	if(estado.teclas.z && gordon.andar)
+	if(!estado.teclas.right && !estado.teclas.left){
+		gordon.andar=GL_FALSE;
+	}
+
+	if(estado.teclas.z && gordon.andar && !gordon.saltar && !gordon.cair)
 		gordon.correr=GL_TRUE;
+	else
+		gordon.correr=GL_FALSE;
 
 	setAnimacoes();
 

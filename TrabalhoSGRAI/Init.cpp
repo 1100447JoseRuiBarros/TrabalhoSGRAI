@@ -35,7 +35,8 @@ void init()
 	estado.vista[JANELA_NAVIGATE]=0;
 
 	gordon.objecto.pos.x=0;
-	gordon.objecto.pos.y=OBJECTO_ALTURA;
+	//gordon.objecto.pos.y=OBJECTO_ALTURA;
+	gordon.objecto.pos.y=0;
 	gordon.objecto.pos.z=0;
 	gordon.objecto.dir=0;
 	gordon.objecto.vel=OBJECTO_VELOCIDADE;
