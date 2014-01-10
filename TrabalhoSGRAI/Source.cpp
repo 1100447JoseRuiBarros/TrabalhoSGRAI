@@ -77,11 +77,7 @@ void createDisplayLists(int janelaID)
 	modelo.chao[janelaID]=modelo.labirinto[janelaID]+1;
 	glNewList(modelo.chao[janelaID], GL_COMPILE);
 	glPushAttrib(GL_COLOR_BUFFER_BIT | GL_CURRENT_BIT | GL_ENABLE_BIT );
-	desenhaskybox();
-	desenhachao(modelo.texID[janelaID][ID_TEXTURA_CUBOS]);
-	desenhapips(modelo.texID[janelaID][ID_TEXTURA_PIPES]);
-	desenhaescadas(modelo.texID[janelaID][ID_TEXTURA_ESCADAS]);
-	desenhaplataformas(modelo.texID[janelaID][ID_TEXTURA_PLATAFORMAS]);
+	constroicena(janelaID);
 	glPopAttrib();
 	glEndList();
 }

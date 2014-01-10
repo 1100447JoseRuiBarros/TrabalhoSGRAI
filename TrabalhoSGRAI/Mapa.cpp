@@ -286,3 +286,12 @@ void desenhaskybox()
 
 	glBindTexture(GL_TEXTURE_2D, NULL);
 }
+
+void constroicena(int janelaID)
+{
+	desenhaskybox();
+	desenhachao(modelo.texID[janelaID][ID_TEXTURA_CUBOS]);
+	desenhapips(modelo.texID[janelaID][ID_TEXTURA_PIPES]);
+	desenhaescadas(modelo.texID[janelaID][ID_TEXTURA_ESCADAS]);
+	desenhaplataformas(modelo.texID[janelaID][ID_TEXTURA_PLATAFORMAS]);
+}

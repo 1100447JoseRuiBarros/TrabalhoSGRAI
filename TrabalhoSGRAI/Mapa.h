@@ -7,3 +7,4 @@ void desenhapips(GLuint texID);
 void desenhaescadas(GLuint texID);
 void desenhaplataformas(GLuint texID);
 void desenhaskybox();
+void constroicena(int janelaID);
