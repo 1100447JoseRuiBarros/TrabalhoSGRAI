@@ -52,6 +52,7 @@ void imprime_ajuda(void)
 	printf("******* Diversos ******* \n");
 	printf("w,W - Wireframe \n");
 	printf("f,F - Fill \n");
+	printf("c,C - Color \n");
 	printf("ESC - Sair\n");
 	printf("******* Movimento ******* \n");
 	printf("righ- Andar para a frente \n");
