@@ -16,8 +16,9 @@
 #define SCALE_GORDON               0.015
 #define SCALE_GORDONY              0.01
 #define RAIOX_GORDON               0.15
-#define RAIOY_GORDON               RAIOX_GORDON*3
+#define RAIOY_GORDON               RAIOX_GORDON*2.5
 #define EYE_ROTACAO			        1
+#define GRAVIDADE					0.001;
 
 #define NOME_TEXTURA_CUBOS			"Cubo.bmp"
 #define NOME_TEXTURA_PLATAFORMAS	"Plataforma.bmp"

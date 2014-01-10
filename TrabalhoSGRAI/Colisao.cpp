@@ -19,30 +19,40 @@
 
 GLboolean detectaColisao(GLfloat nx,GLfloat ny)
 {
-	/* Coordenadas recebidas por parametro
-	z
-	^
-	|
-	-> x
-	*/
-
 	printf("nx:%f-ny:%f\n",nx,ny);
 
+	//for(float i=0; i <= 2 * M_PI; i=i+M_PI/4){
 
-	for(float i=0; i <= 2 * M_PI; i=i+M_PI/5){
+	//	int yChao=floor((-ny+6 -  RAIOY_GORDON*sin(i))-0.5);//A arranjar
+	//	//int yChao=floor(( -ny + 5  +   RAIOY_GORDON*sin(i)));
+	//	int xChao=floor(( nx + 1  +   RAIOX_GORDON*cos(i))+0.5);
+	//	printf("xChao:%d-yChao:%d\n",xChao,yChao);
+	//	printf("i=%f\n",i);
+	//	printf("Matriz Chao=%c\n",chao_mapa[yChao][xChao]);
+	//	printf("Matriz Tecto=%c\n",tecto_mapa[yChao][xChao]);
+	//	if(chao_mapa[yChao][xChao]=='*' ||chao_mapa[yChao][xChao]=='1' || chao_mapa[yChao][xChao]=='2' 
+	//		||tecto_mapa[yChao][xChao]=='*' ||tecto_mapa[yChao][xChao]=='1' || tecto_mapa[yChao][xChao]=='2'
+	//		|| tecto_mapa[yChao][xChao]=='3' )
+	//		return GL_TRUE;
+	//}
 
+	//Versão simplificada
+	int yChao=0, xChao;
 
-		/*int xChao=(int)COMP_CHAO-0.5+nx+RAIOX_GORDON*cos(i);
-		int yChao=(int)ALT_CHAO+0.5+ny+RAIOY_GORDON*sin(i);*/
-		int yChao=floor(( ny + 5  +   RAIOY_GORDON*sin(i))+0.5);
-		int xChao=floor(( nx + 1  +   RAIOX_GORDON*cos(i))+0.5);
-		printf("xChao:%d-yChao:%d\n",xChao,yChao);
-		printf("i=%f\n",i);
-		printf("Matriz=%c\n",chao_mapa[yChao][xChao]);
-		if(chao_mapa[yChao][xChao]=='*' ||chao_mapa[yChao][xChao]=='1' || chao_mapa[yChao][xChao]=='2' )
-			return GL_TRUE;
-	}
+	if(gordon.saltar)
+		yChao=floor((5.5-ny-RAIOY_GORDON));
+	else
+		yChao=floor((5.5-ny+RAIOY_GORDON));
 
+	if(gordon.andarFrente)
+		xChao=floor(( nx + 1.5 + RAIOX_GORDON));
+	else
+		xChao=floor(( nx + 1.5 - RAIOX_GORDON));
+
+	if(chao_mapa[yChao][xChao]=='*' ||chao_mapa[yChao][xChao]=='1' || chao_mapa[yChao][xChao]=='2' 
+		||tecto_mapa[yChao][xChao]=='*' ||tecto_mapa[yChao][xChao]=='1' || tecto_mapa[yChao][xChao]=='2'
+		|| tecto_mapa[yChao][xChao]=='3' )
+		return GL_TRUE;
 	return GL_FALSE;
 }
 

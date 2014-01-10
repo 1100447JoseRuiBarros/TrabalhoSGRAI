@@ -295,7 +295,7 @@ void desenhachao(GLuint texID)
 			if(chao_mapa[i][j]=='*')
 			{
 				glPushMatrix();
-				glTranslatef(x-1,y-0.5,0);
+				glTranslatef(x-1,y-1,0);
 				desenhaCubo();
 				glPopMatrix();
 				x++;
@@ -328,7 +328,7 @@ void desenhapips(GLuint texID)
 			if(chao_mapa[i][j]=='1')
 			{
 				glPushMatrix();
-					glTranslatef(x-1,y,0);
+					glTranslatef(x-1,y-0.5,0);
 					glRotatef(90,1,0,0);
 					glRotatef(180,0,0,1);
 					glColor3f(0.5f,0.5f,0.5f);
@@ -340,7 +340,7 @@ void desenhapips(GLuint texID)
 				glBindTexture(GL_TEXTURE_2D, NULL);
 
 				glPushMatrix();
-				glTranslatef(x-1,y,0);
+				glTranslatef(x-1,y-0.5,0);
 				glRotatef(90,1,0,0);
 				glBegin(GL_POLYGON);
 				//glColor3f(0.031f,0.476f,0.105f);
@@ -378,7 +378,7 @@ void desenhaescadas(GLuint texID)
 			if(chao_mapa[i][j]=='2')
 			{
 				glPushMatrix();
-				glTranslatef(x-1,y-0.5,0);
+				glTranslatef(x-1,y-1,0);
 				desenhaCubo();
 				glPopMatrix();
 				x++;
@@ -407,7 +407,7 @@ void desenhaplataformas(GLuint texID)
 			if(tecto_mapa[i][j]=='3')
 			{
 				glPushMatrix();
-				glTranslatef(x-1,y-0.5,0);
+				glTranslatef(x-1,y-1,0);
 				desenhaCubo();
 				glPopMatrix();
 				x++;
@@ -579,7 +579,7 @@ void init()
 {
 	GLfloat amb[] = { 0.3f, 0.3f, 0.3f, 1.0f };
 
-	estado.timer=100;	
+	estado.timer=10;	
 
 	/*estado.camera.eye.x=0;
 	estado.camera.eye.y=OBJECTO_ALTURA*2;
@@ -594,7 +594,8 @@ void init()
 	estado.vista[JANELA_NAVIGATE]=0;
 
 	gordon.objecto.pos.x=0;
-	gordon.objecto.pos.y=OBJECTO_ALTURA;
+	//gordon.objecto.pos.y=OBJECTO_ALTURA;
+	gordon.objecto.pos.y=0;
 	gordon.objecto.pos.z=0;
 	gordon.objecto.dir=0;
 	gordon.objecto.vel=OBJECTO_VELOCIDADE;

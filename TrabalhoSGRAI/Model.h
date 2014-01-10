@@ -18,6 +18,7 @@ public:
 	GLboolean     andar;
 	GLboolean	  correr;
 	GLboolean	  saltar;
+	GLboolean	  cair;
 	GLuint        prev;
 	GLuint	      saltarStartTime;
 	
