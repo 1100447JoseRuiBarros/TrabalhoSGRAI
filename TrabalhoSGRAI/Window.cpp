@@ -87,18 +87,32 @@ void displayTopSubwindow()
 	mdlviewer_display(gordon.stdModel[JANELA_TOP]);
 	glPopMatrix();
 	desenhaBoundingBox();
-	GLint x=2;
 
-		for(int i=0;i<3;i++){
-
-			glPushMatrix();
-			glTranslatef(x+i,0,0);
-			//glRotatef(GRAUS(gordon.objecto.dir),0,1,0);
+	for(int i=0; i < 3 ; i++)
+	{
+		if(headCrabs[i].objecto.pos.x > 0)
+		{
+			glPushMatrix();		
+			glTranslatef(headCrabs[i].objecto.pos.x,headCrabs[i].objecto.pos.y,headCrabs[i].objecto.pos.z);
+			glRotatef(GRAUS(headCrabs[i].objecto.dir),0,1,0);
 			glRotatef(-90,1,0,0);
-			glScalef(SCALE_GORDON,SCALE_GORDON,SCALE_GORDON);
+			glScalef(SCALE_GORDON+0.01,SCALE_GORDON+0.01,SCALE_GORDONY+0.01);
 			mdlviewer_display(headCrabs[i].stdModel[JANELA_TOP]);
 			glPopMatrix();
 		}
+	}
+	//GLint x=2;
+
+	//	for(int i=0;i<3;i++){
+
+	//		glPushMatrix();
+	//		glTranslatef(x+i,0,0);
+	//		//glRotatef(GRAUS(gordon.objecto.dir),0,1,0);
+	//		glRotatef(-90,1,0,0);
+	//		glScalef(SCALE_GORDON,SCALE_GORDON,SCALE_GORDON);
+	//		mdlviewer_display(headCrabs[i].stdModel[JANELA_TOP]);
+	//		glPopMatrix();
+	//	}
 
 	//desenhaAngVisao(&estado.camera1);
 	glutSwapBuffers();
@@ -126,20 +140,33 @@ void displayNavigateSubwindow()
 		mdlviewer_display(gordon.stdModel[JANELA_NAVIGATE]);
 		glPopMatrix();
 
-		
-
-		GLint x=2;
-
-		for(int i=0;i<3;i++){
-
-			glPushMatrix();
-			glTranslatef(x+i,0,0);
-			//glRotatef(GRAUS(gordon.objecto.dir),0,1,0);
-			glRotatef(-90,1,0,0);
-			glScalef(SCALE_GORDON,SCALE_GORDON,SCALE_GORDON);
-			mdlviewer_display(headCrabs[i].stdModel[JANELA_NAVIGATE]);
-			glPopMatrix();
+		for(int i=0; i < 3 ; i++)
+		{
+			if(headCrabs[i].objecto.pos.x != NULL)
+				if(headCrabs[i].objecto.pos.x > 0)
+				{
+					glPushMatrix();		
+					glTranslatef(headCrabs[i].objecto.pos.x,headCrabs[i].objecto.pos.y,headCrabs[i].objecto.pos.z);
+					glRotatef(GRAUS(headCrabs[i].objecto.dir),0,1,0);
+					glRotatef(-90,1,0,0);
+					glScalef(SCALE_GORDON+0.01,SCALE_GORDON+0.01,SCALE_GORDONY+0.01);
+					mdlviewer_display(headCrabs[i].stdModel[JANELA_NAVIGATE]);
+					glPopMatrix();
+				}
 		}
+
+		//GLint x=2;
+
+		//for(int i=0;i<3;i++){
+
+		//	glPushMatrix();
+		//	glTranslatef(x+i,0,0);
+		//	//glRotatef(GRAUS(gordon.objecto.dir),0,1,0);
+		//	glRotatef(-90,1,0,0);
+		//	glScalef(SCALE_GORDON,SCALE_GORDON,SCALE_GORDON);
+		//	mdlviewer_display(headCrabs[i].stdModel[JANELA_NAVIGATE]);
+		//	glPopMatrix();
+		//}
 	}
 
 	glutSwapBuffers();

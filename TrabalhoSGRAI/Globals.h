@@ -10,7 +10,7 @@
 extern ESTADO estado;
 extern MODELO modelo;
 extern Model gordon;
-extern Model headCrabs[3];
+extern Model headCrabs[6];
 
 extern GLUquadric* quad;
 extern GLuint *skybox;

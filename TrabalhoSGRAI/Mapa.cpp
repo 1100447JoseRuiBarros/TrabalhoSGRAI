@@ -1,7 +1,7 @@
 #pragma once
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <vector>
 
 #ifdef __APPLE__
 #include <GLUT/glut.h>
@@ -294,4 +294,29 @@ void constroicena(int janelaID)
 	desenhapips(modelo.texID[janelaID][ID_TEXTURA_PIPES]);
 	desenhaescadas(modelo.texID[janelaID][ID_TEXTURA_ESCADAS]);
 	desenhaplataformas(modelo.texID[janelaID][ID_TEXTURA_PLATAFORMAS]);
+}
+
+std::vector<int> posicoesCrabs()
+{
+	int x=0;
+	int y=6;
+
+	std::vector<int> posicoes;
+
+	for(int i=0;i<ALT_TECTO;i++)
+	{
+		for(int j=0;j<COMP_TECTO+1;j++)
+		{
+			if(chao_mapa[i][j]=='c')
+			{
+				posicoes.push_back(x-1);
+				x++;
+			}
+			else
+				x++;
+		}
+		x = 0;
+		y--;
+	}
+	return posicoes;
 }

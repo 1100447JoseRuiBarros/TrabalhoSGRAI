@@ -12,3 +12,4 @@
 #endif
 
 GLboolean detectaColisao(GLfloat nx,GLfloat ny);
+GLboolean detectaColisao2(GLfloat nx,GLfloat ny);

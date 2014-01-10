@@ -1,6 +1,7 @@
 #pragma once
 #include <stdio.h>
 #include <stdlib.h>
+#include <vector>
 
 #ifdef __APPLE__
 #include <GLUT/glut.h>
@@ -15,6 +16,7 @@
 #include "init.h"
 #include "Globals.h"
 #include "Window.h"
+#include "Mapa.h"
 
 void init()
 {
@@ -42,6 +44,24 @@ void init()
 	gordon.objecto.vel=OBJECTO_VELOCIDADE;
 	gordon.andarFrente=GL_TRUE;
 	gordon.saltar=GL_FALSE;
+
+	//CRABS
+	std::vector<int> posicoes;
+	posicoes = posicoesCrabs();
+	int i=0;
+
+	for(std::vector<int>::iterator it = posicoes.begin();
+		it != posicoes.end();it++)
+	{
+		headCrabs[i].objecto.pos.x= *it;
+		headCrabs[i].objecto.pos.y=-0.5;
+		headCrabs[i].objecto.pos.z=0;
+		headCrabs[i].objecto.dir=M_PI;
+		headCrabs[i].objecto.vel=OBJECTO_VELOCIDADE;
+		headCrabs[i].andarFrente=GL_FALSE;
+		headCrabs[i].saltar=GL_FALSE;
+		i++;
+	}
 
 	modelo.xMouse=modelo.yMouse=-1;
 

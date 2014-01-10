@@ -123,10 +123,64 @@ bool verificaChao(){
 		return false; 
 }
 
+void crabsColisoes(GLuint curr)
+{
+	//crabs
+
+
+	headCrabs[0].prev = curr;
+
+	for(int i=0; i< 3; i++)
+	{
+		GLfloat hx = headCrabs[i].objecto.pos.x;
+		GLfloat hy = headCrabs[i].objecto.pos.y;
+
+		if(headCrabs[i].stdModel[JANELA_NAVIGATE].GetSequence()==0)
+		{
+			headCrabs[i].stdModel[JANELA_NAVIGATE].SetSequence(4);
+			headCrabs[i].stdModel[JANELA_TOP].SetSequence(4);
+		}
+
+		if(headCrabs[i].andarFrente)
+		{
+			if(!detectaColisao2(hx + 0.05,hy))
+			{
+				headCrabs[i].objecto.pos.x=hx + 0.05;
+				headCrabs[i].andar=GL_TRUE;
+				/*headCrabs[0].stdModel[JANELA_NAVIGATE].SetSequence(3);
+				headCrabs[0].stdModel[JANELA_TOP].SetSequence(3);*/
+				headCrabs[i].objecto.dir = 0;
+			}
+			else
+			{
+				headCrabs[i].andarFrente = GL_FALSE;
+				headCrabs[i].objecto.dir = M_PI;
+			}		
+		}
+		else
+		{
+			if(!detectaColisao2(hx - 0.05,hy))
+			{
+				headCrabs[i].objecto.pos.x=hx - 0.05;
+				headCrabs[i].andar=GL_TRUE;
+				/*headCrabs[0].stdModel[JANELA_NAVIGATE].SetSequence(3);
+				headCrabs[0].stdModel[JANELA_TOP].SetSequence(3);*/
+				headCrabs[i].objecto.dir = M_PI;
+			}
+			else
+			{
+				headCrabs[i].andarFrente = GL_TRUE;
+				headCrabs[i].objecto.dir = 0;
+			}
+		}
+	}
+}
 
 void Timer(int value)
 {
 	GLuint curr = glutGet(GLUT_ELAPSED_TIME);
+	crabsColisoes(curr);
+
 	// calcula velocidade baseado no tempo passado
 	if(!gordon.correr)
 		velocidade= gordon.objecto.vel*(curr - gordon.prev )*0.001;
@@ -139,9 +193,9 @@ void Timer(int value)
 
 	if(gordon.saltar)
 		saltar();
-	else
-		if(verificaChao()||gordon.cair)
-			cair();
+	/*else
+	if(verificaChao()||gordon.cair)
+	cair();*/
 
 	if(estado.teclas.x && !gordon.saltar){
 		yInicial=gordon.objecto.pos.y;
