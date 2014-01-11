@@ -55,6 +55,6 @@
 #define TEMPO_SALTO				900
 
 #define COMP_CHAO				140
-#define ALT_CHAO				10
+#define ALT_CHAO				12
 #define COMP_TECTO				140
-#define ALT_TECTO				7
+#define ALT_TECTO				9

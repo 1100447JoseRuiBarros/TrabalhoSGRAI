@@ -86,7 +86,7 @@ void displayTopSubwindow()
 	glScalef(SCALE_GORDON,SCALE_GORDON,SCALE_GORDONY);
 	mdlviewer_display(gordon.stdModel[JANELA_TOP]);
 	glPopMatrix();
-	desenhaBoundingBox();
+	//desenhaBoundingBox();
 
 	for(int i=0; i < 3 ; i++)
 	{

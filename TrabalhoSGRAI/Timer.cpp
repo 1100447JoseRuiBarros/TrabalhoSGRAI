@@ -20,51 +20,107 @@
 GLfloat nx,ny;
 float velocidade;
 float gravidade;
-GLfloat yInicial;
+GLfloat yInicial=0;
+int plat1 [140] = {0,0,1,0,0,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,1,0,0,1,0,1,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+int plat2 [140] = {0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 
-void saltar(){
+void saltar()
+{
 
-	ny=gordon.objecto.pos.y+velocidade;
-	if(!detectaColisao(nx,ny)){
-		if(gordon.objecto.pos.y < yInicial + 3){
+	ny=gordon.objecto.pos.y+velocidade*10;
+	if(!detectaColisao(nx,ny - 0.01))
+	{
+		if(gordon.objecto.pos.y < yInicial + 4)
+		{
 			gordon.objecto.pos.y=ny;
 			gordon.saltar=GL_TRUE; 
 		}
-		else{
+		else
+		{
 			gordon.saltar=GL_FALSE;
 			gordon.cair=GL_TRUE;
 		}
 	}
-	else{
+	else
+	{
 		gordon.saltar=GL_FALSE;
 		gordon.cair=GL_TRUE;
 	}
 }
 
-void cair(){
+void cair()
+{
 
-	ny=gordon.objecto.pos.y-gravidade;
-	if(!detectaColisao(nx,ny)){
-
+	ny=gordon.objecto.pos.y-gravidade*10;
+	if(!detectaColisao(nx,ny - 0.01))
+	{
 		gordon.objecto.pos.y=ny;
 		gordon.cair=GL_TRUE; 
 	}
-	else{
+	else
+	{
 		gordon.cair=GL_FALSE;
 		//gordon.objecto.pos.y+=0.25;
 	}
+
 }
 
-void virarFrente(){
+void verificacimaplataforma1()
+{
+	float nxesq = gordon.objecto.pos.x;
+	float nxdir = gordon.objecto.pos.x;
+	ny=gordon.objecto.pos.y;
 
-	if(!gordon.andarFrente){
+	if(ny > 2.8 && ny < 3.3)
+	{
+		printf("nx:%f-ny:%f\n",nx,ny);
+		if(plat1[(int)nxesq-1]==0 || plat1[(int)nxdir+1]==0)
+		{
+			gordon.objecto.pos.y=ny;
+			gordon.cair=GL_TRUE;
+		}
+		else
+		{
+			gordon.cair=GL_FALSE;
+		}
+	}
+}
+
+void verificacimaplataforma2()
+{
+	float nxesq = gordon.objecto.pos.x;
+	float nxdir = gordon.objecto.pos.x;
+	ny=gordon.objecto.pos.y;
+
+	if(ny > 2.8 && ny < 3.3)
+	{
+		printf("nx:%f-ny:%f\n",nx,ny);
+		if(plat2[(int)nxesq-1]==0 || plat2[(int)nxdir+1]==0)
+		{
+			gordon.objecto.pos.y=ny;
+			gordon.cair=GL_TRUE;
+		}
+		else
+		{
+			gordon.cair=GL_FALSE;
+		}
+	}
+}
+
+
+
+void virarFrente()
+{
+
+	if(!gordon.andarFrente)
+	{
 		gordon.objecto.dir+=M_PI;
 		gordon.andarFrente=GL_TRUE;
 	}
 	// calcula nova posição nx,nz
 	nx=gordon.objecto.pos.x+velocidade;
-	if(!detectaColisao(nx,ny)){
-
+	if(!detectaColisao(nx - 0.05,ny))
+	{
 		gordon.objecto.pos.x=nx;
 		gordon.andar=GL_TRUE; 
 	}
@@ -72,51 +128,72 @@ void virarFrente(){
 	//printf("Colidiu a andar para a direita lolololololol!\n");
 }
 
-void virarTras(){
+void virarTras()
+{
 
-	if(gordon.andarFrente){
+	if(gordon.andarFrente)
+	{
 		gordon.objecto.dir-=M_PI;
 		gordon.andarFrente=GL_FALSE;
 	}
 	// calcula nova posição nx,nz
 	nx=gordon.objecto.pos.x-velocidade;
 
-	if(!detectaColisao(nx,ny)){
+	if(!detectaColisao(nx - 0.05,ny))
+	{
 
 		gordon.objecto.pos.x=nx;
 		gordon.andar=GL_TRUE;
 	}
 }			
 
-void setAnimacoes(){
-
-	if(gordon.andar=GL_FALSE && gordon.stdModel[JANELA_NAVIGATE].GetSequence()!=0
-		|| gordon.cair && gordon.stdModel[JANELA_NAVIGATE].GetSequence()!=0){
+void setAnimacoes()
+{
+	if((gordon.cair || gordon.saltar) && gordon.stdModel[JANELA_NAVIGATE].GetSequence()!=0 )
+	{
 			gordon.stdModel[JANELA_NAVIGATE].SetSequence(0);
 			gordon.stdModel[JANELA_TOP].SetSequence(0);
+			return;
 	}
 
-	if( gordon.andar && !gordon.correr && gordon.stdModel[JANELA_NAVIGATE].GetSequence()!=4){
-		gordon.stdModel[JANELA_NAVIGATE].SetSequence(4);
-		gordon.stdModel[JANELA_TOP].SetSequence(4);
+
+	if(( (!gordon.andar && !gordon.correr) ) 
+		&& gordon.stdModel[JANELA_NAVIGATE].GetSequence() != 0)
+	{
+			gordon.stdModel[JANELA_NAVIGATE].SetSequence(0);
+			gordon.stdModel[JANELA_TOP].SetSequence(0);
+			return;
 	}
 
-	if(gordon.correr && gordon.stdModel[JANELA_NAVIGATE].GetSequence()!=3){
+
+	if(gordon.correr && gordon.stdModel[JANELA_NAVIGATE].GetSequence()!=3)
+	{
 		gordon.stdModel[JANELA_NAVIGATE].SetSequence(3);
 		gordon.stdModel[JANELA_TOP].SetSequence(3);
+		return;
 	}
 
-	if(gordon.saltar && gordon.stdModel[JANELA_NAVIGATE].GetSequence()!=8){
+	if(gordon.andar && gordon.stdModel[JANELA_NAVIGATE].GetSequence()!=4)
+	{
+		gordon.stdModel[JANELA_NAVIGATE].SetSequence(4);
+		gordon.stdModel[JANELA_TOP].SetSequence(4);
+		return;
+	}
+
+	if(gordon.saltar && gordon.stdModel[JANELA_NAVIGATE].GetSequence()!=8)
+	{
 		gordon.stdModel[JANELA_NAVIGATE].SetSequence(8);
 		gordon.stdModel[JANELA_TOP].SetSequence(8);
+		return;
 	}
 }
 
-bool verificaChao(){
+bool verificaChao()
+{
 
 	ny=gordon.objecto.pos.y-gravidade;
-	if(!detectaColisao(nx,ny)){
-
+	if(!detectaColisao(nx,ny))
+	{
 		return true; 
 	}
 	else
@@ -193,32 +270,50 @@ void Timer(int value)
 
 	if(gordon.saltar)
 		saltar();
-	/*else
-	if(verificaChao()||gordon.cair)
-	cair();*/
+	else
+		if(verificaChao() && gordon.cair)
+			cair();
+		else
+			verificacimaplataforma1();
 
-	if(estado.teclas.x && !gordon.saltar){
+	/*verificacimaplataforma2();*/
+		
+
+	if(estado.teclas.x && !gordon.saltar && !gordon.cair)
+	{
 		yInicial=gordon.objecto.pos.y;
 		alSourcePlay(estado.source[1]);
 		saltar();
 	}
 
-	if(estado.teclas.right){
+	if(estado.teclas.right)
+	{
 		virarFrente();
 	}
 
-	if(estado.teclas.left){
+	if(estado.teclas.left)
+	{
 		virarTras();
 	}
 
-	if(!estado.teclas.right && !estado.teclas.left){
+	if(estado.teclas.z && !gordon.saltar && !gordon.cair)
+	{
 		gordon.andar=GL_FALSE;
-	}
-
-	if(estado.teclas.z && gordon.andar && !gordon.saltar && !gordon.cair)
 		gordon.correr=GL_TRUE;
+	}
 	else
 		gordon.correr=GL_FALSE;
+
+	if(!estado.teclas.right && !estado.teclas.left)
+	{
+		gordon.andar=GL_FALSE;
+		gordon.correr=GL_FALSE;
+	}
+
+	/*if(!verificaChaoParado())
+	{
+		gordon.cair = GL_TRUE;
+	}*/
 
 	setAnimacoes();
 

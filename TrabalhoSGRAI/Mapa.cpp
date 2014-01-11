@@ -67,7 +67,7 @@ void desenhaCubo()
 void desenhachao(GLuint texID)
 {
 	int x=0;
-	int y=6;
+	int y=8;
 
 	glBindTexture(GL_TEXTURE_2D, texID);
 
@@ -96,7 +96,7 @@ void desenhachao(GLuint texID)
 void desenhapips(GLuint texID)
 {
 	int x=0;
-	int y=6;
+	int y=8;
 
 	int numlados = 32;
 	float tamanho = 0.5;
@@ -150,7 +150,7 @@ void desenhapips(GLuint texID)
 void desenhaescadas(GLuint texID)
 {
 	int x=0;
-	int y=6;
+	int y=8;
 
 	glBindTexture(GL_TEXTURE_2D, texID);
 
@@ -179,7 +179,7 @@ void desenhaescadas(GLuint texID)
 void desenhaplataformas(GLuint texID)
 {
 	int x=0;
-	int y=6;
+	int y=8;
 
 	glBindTexture(GL_TEXTURE_2D, texID);
 
@@ -299,7 +299,7 @@ void constroicena(int janelaID)
 std::vector<int> posicoesCrabs()
 {
 	int x=0;
-	int y=6;
+	int y=8;
 
 	std::vector<int> posicoes;
 

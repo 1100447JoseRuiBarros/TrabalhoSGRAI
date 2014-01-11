@@ -1,38 +1,84 @@
-C:\USERS\RUI BARROS\DOCUMENTS\TRABALHOSGRAI\TRABALHOSGRAI\DEBUG\CAMERA.OBJ
-C:\USERS\RUI BARROS\DOCUMENTS\TRABALHOSGRAI\TRABALHOSGRAI\DEBUG\COLISAO.OBJ
-C:\USERS\RUI BARROS\DOCUMENTS\TRABALHOSGRAI\TRABALHOSGRAI\DEBUG\GLOBALS.OBJ
-C:\USERS\RUI BARROS\DOCUMENTS\TRABALHOSGRAI\TRABALHOSGRAI\DEBUG\ILLUMINATION.OBJ
-C:\USERS\RUI BARROS\DOCUMENTS\TRABALHOSGRAI\TRABALHOSGRAI\DEBUG\INIT.OBJ
-C:\USERS\RUI BARROS\DOCUMENTS\TRABALHOSGRAI\TRABALHOSGRAI\DEBUG\KEY.OBJ
-C:\USERS\RUI BARROS\DOCUMENTS\TRABALHOSGRAI\TRABALHOSGRAI\DEBUG\MAPA.OBJ
-C:\USERS\RUI BARROS\DOCUMENTS\TRABALHOSGRAI\TRABALHOSGRAI\DEBUG\MATH.OBJ
-C:\USERS\RUI BARROS\DOCUMENTS\TRABALHOSGRAI\TRABALHOSGRAI\DEBUG\MDLVIEWER.OBJ
-C:\USERS\RUI BARROS\DOCUMENTS\TRABALHOSGRAI\TRABALHOSGRAI\DEBUG\MODEL.OBJ
-C:\USERS\RUI BARROS\DOCUMENTS\TRABALHOSGRAI\TRABALHOSGRAI\DEBUG\MOUSE.OBJ
-C:\USERS\RUI BARROS\DOCUMENTS\TRABALHOSGRAI\TRABALHOSGRAI\DEBUG\TEXTURAS.OBJ
-C:\USERS\RUI BARROS\DOCUMENTS\TRABALHOSGRAI\TRABALHOSGRAI\DEBUG\TIMER.OBJ
-C:\USERS\RUI BARROS\DOCUMENTS\TRABALHOSGRAI\TRABALHOSGRAI\DEBUG\STUDIO_RENDER.OBJ
-C:\USERS\RUI BARROS\DOCUMENTS\TRABALHOSGRAI\TRABALHOSGRAI\DEBUG\STUDIO_UTILS.OBJ
-C:\USERS\RUI BARROS\DOCUMENTS\TRABALHOSGRAI\TRABALHOSGRAI\DEBUG\WINDOW.OBJ
-C:\USERS\RUI BARROS\DOCUMENTS\TRABALHOSGRAI\TRABALHOSGRAI\DEBUG\VC110.PDB
-C:\Users\Rui Barros\Documents\TrabalhoSGRAI\TrabalhoSGRAI\Debug\Camera.obj
-C:\Users\Rui Barros\Documents\TrabalhoSGRAI\TrabalhoSGRAI\Debug\Colisao.obj
-C:\Users\Rui Barros\Documents\TrabalhoSGRAI\TrabalhoSGRAI\Debug\Globals.obj
-C:\Users\Rui Barros\Documents\TrabalhoSGRAI\TrabalhoSGRAI\Debug\Illumination.obj
-C:\Users\Rui Barros\Documents\TrabalhoSGRAI\TrabalhoSGRAI\Debug\Init.obj
-C:\Users\Rui Barros\Documents\TrabalhoSGRAI\TrabalhoSGRAI\Debug\Key.obj
-C:\Users\Rui Barros\Documents\TrabalhoSGRAI\TrabalhoSGRAI\Debug\Mapa.obj
-C:\Users\Rui Barros\Documents\TrabalhoSGRAI\TrabalhoSGRAI\Debug\math.obj
-C:\Users\Rui Barros\Documents\TrabalhoSGRAI\TrabalhoSGRAI\Debug\mdlviewer.obj
-C:\Users\Rui Barros\Documents\TrabalhoSGRAI\TrabalhoSGRAI\Debug\Model.obj
-C:\Users\Rui Barros\Documents\TrabalhoSGRAI\TrabalhoSGRAI\Debug\Mouse.obj
-C:\Users\Rui Barros\Documents\TrabalhoSGRAI\TrabalhoSGRAI\Debug\studio_render.obj
-C:\Users\Rui Barros\Documents\TrabalhoSGRAI\TrabalhoSGRAI\Debug\studio_utils.obj
-C:\Users\Rui Barros\Documents\TrabalhoSGRAI\TrabalhoSGRAI\Debug\Texturas.obj
-C:\Users\Rui Barros\Documents\TrabalhoSGRAI\TrabalhoSGRAI\Debug\Timer.obj
-C:\Users\Rui Barros\Documents\TrabalhoSGRAI\TrabalhoSGRAI\Debug\Window.obj
-C:\Users\Rui Barros\Documents\TrabalhoSGRAI\TrabalhoSGRAI\Debug\cl.command.1.tlog
-C:\Users\Rui Barros\Documents\TrabalhoSGRAI\TrabalhoSGRAI\Debug\CL.read.1.tlog
-C:\Users\Rui Barros\Documents\TrabalhoSGRAI\TrabalhoSGRAI\Debug\CL.write.1.tlog
-C:\Users\Rui Barros\Documents\TrabalhoSGRAI\TrabalhoSGRAI\Debug\vc110.idb
-C:\Users\Rui Barros\Documents\TrabalhoSGRAI\TrabalhoSGRAI\Debug\vc110.pdb
+C:\USERS\ANDRE\DESKTOP\REPOSITORIO\TRABALHOSGRAI\TRABALHOSGRAI\DEBUG\MATH.OBJ
+C:\USERS\ANDRE\DESKTOP\REPOSITORIO\TRABALHOSGRAI\TRABALHOSGRAI\DEBUG\MDLVIEWER.OBJ
+C:\USERS\ANDRE\DESKTOP\REPOSITORIO\TRABALHOSGRAI\TRABALHOSGRAI\DEBUG\MODEL.OBJ
+C:\USERS\ANDRE\DESKTOP\REPOSITORIO\TRABALHOSGRAI\TRABALHOSGRAI\DEBUG\STUDIO_RENDER.OBJ
+C:\USERS\ANDRE\DESKTOP\REPOSITORIO\TRABALHOSGRAI\TRABALHOSGRAI\DEBUG\STUDIO_UTILS.OBJ
+C:\USERS\ANDRE\DESKTOP\REPOSITORIO\TRABALHOSGRAI\TRABALHOSGRAI\DEBUG\CAMERA.OBJ
+C:\USERS\ANDRE\DESKTOP\REPOSITORIO\TRABALHOSGRAI\TRABALHOSGRAI\DEBUG\COLISAO.OBJ
+C:\USERS\ANDRE\DESKTOP\REPOSITORIO\TRABALHOSGRAI\TRABALHOSGRAI\DEBUG\GLOBALS.OBJ
+C:\USERS\ANDRE\DESKTOP\REPOSITORIO\TRABALHOSGRAI\TRABALHOSGRAI\DEBUG\ILLUMINATION.OBJ
+C:\USERS\ANDRE\DESKTOP\REPOSITORIO\TRABALHOSGRAI\TRABALHOSGRAI\DEBUG\INIT.OBJ
+C:\USERS\ANDRE\DESKTOP\REPOSITORIO\TRABALHOSGRAI\TRABALHOSGRAI\DEBUG\KEY.OBJ
+C:\USERS\ANDRE\DESKTOP\REPOSITORIO\TRABALHOSGRAI\TRABALHOSGRAI\DEBUG\MAPA.OBJ
+C:\USERS\ANDRE\DESKTOP\REPOSITORIO\TRABALHOSGRAI\TRABALHOSGRAI\DEBUG\MOUSE.OBJ
+C:\USERS\ANDRE\DESKTOP\REPOSITORIO\TRABALHOSGRAI\TRABALHOSGRAI\DEBUG\SOURCE.OBJ
+C:\USERS\ANDRE\DESKTOP\REPOSITORIO\TRABALHOSGRAI\TRABALHOSGRAI\DEBUG\TEXTURAS.OBJ
+C:\USERS\ANDRE\DESKTOP\REPOSITORIO\TRABALHOSGRAI\TRABALHOSGRAI\DEBUG\TIMER.OBJ
+C:\USERS\ANDRE\DESKTOP\REPOSITORIO\TRABALHOSGRAI\TRABALHOSGRAI\DEBUG\WINDOW.OBJ
+C:\USERS\ANDRE\DESKTOP\REPOSITORIO\TRABALHOSGRAI\TRABALHOSGRAI\DEBUG\VC110.PDB
+C:\USERS\ANDRE\DESKTOP\REPOSITORIO\TRABALHOSGRAI\TRABALHOSGRAI\DEBUG\READJPEG.OBJ
+C:\USERS\ANDRE\DESKTOP\REPOSITORIO\TRABALHOSGRAI\DEBUG\TRABALHOSGRAI.ILK
+C:\USERS\ANDRE\DESKTOP\REPOSITORIO\TRABALHOSGRAI\DEBUG\TRABALHOSGRAI.EXE
+C:\USERS\ANDRE\DESKTOP\REPOSITORIO\TRABALHOSGRAI\DEBUG\TRABALHOSGRAI.PDB
+C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\TrabalhoSGRAI\Debug\Camera.obj
+C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\TrabalhoSGRAI\Debug\Colisao.obj
+C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\TrabalhoSGRAI\Debug\Globals.obj
+C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\TrabalhoSGRAI\Debug\Illumination.obj
+C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\TrabalhoSGRAI\Debug\Init.obj
+C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\TrabalhoSGRAI\Debug\Key.obj
+C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\TrabalhoSGRAI\Debug\Mapa.obj
+C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\TrabalhoSGRAI\Debug\math.obj
+C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\TrabalhoSGRAI\Debug\mdlviewer.obj
+C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\TrabalhoSGRAI\Debug\Model.obj
+C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\TrabalhoSGRAI\Debug\Mouse.obj
+C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\TrabalhoSGRAI\Debug\readjpeg.obj
+C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\TrabalhoSGRAI\Debug\Source.obj
+C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\TrabalhoSGRAI\Debug\studio_render.obj
+C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\TrabalhoSGRAI\Debug\studio_utils.obj
+C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\TrabalhoSGRAI\Debug\Texturas.obj
+C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\TrabalhoSGRAI\Debug\Window.obj
+C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\TrabalhoSGRAI\Debug\cl.command.1.tlog
+C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\TrabalhoSGRAI\Debug\CL.read.1.tlog
+C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\TrabalhoSGRAI\Debug\CL.write.1.tlog
+C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\TrabalhoSGRAI\Debug\link-cvtres.read.1.tlog
+C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\TrabalhoSGRAI\Debug\link-cvtres.write.1.tlog
+C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\TrabalhoSGRAI\Debug\link-rc.read.1.tlog
+C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\TrabalhoSGRAI\Debug\link-rc.write.1.tlog
+C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\TrabalhoSGRAI\Debug\link.1588-cvtres.read.1.tlog
+C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\TrabalhoSGRAI\Debug\link.1588-cvtres.write.1.tlog
+C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\TrabalhoSGRAI\Debug\link.1588-rc.read.1.tlog
+C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\TrabalhoSGRAI\Debug\link.1588-rc.write.1.tlog
+C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\TrabalhoSGRAI\Debug\link.1588.read.1.tlog
+C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\TrabalhoSGRAI\Debug\link.1588.write.1.tlog
+C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\TrabalhoSGRAI\Debug\link.1656-cvtres.read.1.tlog
+C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\TrabalhoSGRAI\Debug\link.1656-cvtres.write.1.tlog
+C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\TrabalhoSGRAI\Debug\link.1656-rc.read.1.tlog
+C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\TrabalhoSGRAI\Debug\link.1656-rc.write.1.tlog
+C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\TrabalhoSGRAI\Debug\link.1656.read.1.tlog
+C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\TrabalhoSGRAI\Debug\link.1656.write.1.tlog
+C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\TrabalhoSGRAI\Debug\link.3432-cvtres.read.1.tlog
+C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\TrabalhoSGRAI\Debug\link.3432-cvtres.write.1.tlog
+C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\TrabalhoSGRAI\Debug\link.3432-rc.read.1.tlog
+C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\TrabalhoSGRAI\Debug\link.3432-rc.write.1.tlog
+C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\TrabalhoSGRAI\Debug\link.3432.read.1.tlog
+C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\TrabalhoSGRAI\Debug\link.3432.write.1.tlog
+C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\TrabalhoSGRAI\Debug\link.3620-cvtres.read.1.tlog
+C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\TrabalhoSGRAI\Debug\link.3620-cvtres.write.1.tlog
+C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\TrabalhoSGRAI\Debug\link.3620-rc.read.1.tlog
+C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\TrabalhoSGRAI\Debug\link.3620-rc.write.1.tlog
+C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\TrabalhoSGRAI\Debug\link.3620.read.1.tlog
+C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\TrabalhoSGRAI\Debug\link.3620.write.1.tlog
+C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\TrabalhoSGRAI\Debug\link.5088-cvtres.read.1.tlog
+C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\TrabalhoSGRAI\Debug\link.5088-cvtres.write.1.tlog
+C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\TrabalhoSGRAI\Debug\link.5088-rc.read.1.tlog
+C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\TrabalhoSGRAI\Debug\link.5088-rc.write.1.tlog
+C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\TrabalhoSGRAI\Debug\link.5088.read.1.tlog
+C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\TrabalhoSGRAI\Debug\link.5088.write.1.tlog
+C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\TrabalhoSGRAI\Debug\link.command.1.tlog
+C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\TrabalhoSGRAI\Debug\link.read.1.tlog
+C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\TrabalhoSGRAI\Debug\link.write.1.tlog
+C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\TrabalhoSGRAI\Debug\vc110.idb
+C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\TrabalhoSGRAI\Debug\vc110.pdb
+C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\Debug\TrabalhoSGRAI.pdb
+C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\Debug\TrabalhoSGRAI.exe
+C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\Debug\TrabalhoSGRAI.ilk

@@ -86,10 +86,10 @@ void setTopSubwindowCamera( camera_t *cam,objecto_t obj)
 	pos_t center;
 
 	cam->eye.x=obj.pos.x;
-	cam->eye.y=2;
-	cam->eye.z=obj.pos.z+6;
+	cam->eye.y=3;
+	cam->eye.z=obj.pos.z+8;
 	center.x=obj.pos.x;
-	center.y=2;
+	center.y=3;
 	center.z=obj.pos.z;
 	//if(estado.vista[JANELA_TOP])
 	gluLookAt(cam->eye.x,cam->eye.y,cam->eye.z,center.x,center.y,center.z,0,1,0);
