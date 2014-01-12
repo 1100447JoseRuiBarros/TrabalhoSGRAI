@@ -205,4 +205,6 @@ void restart()
 	estado.teclas.up = GL_FALSE;
 	estado.teclas.x = GL_FALSE;
 	estado.teclas.z = GL_FALSE;
+	alSourceStop(estado.source[0]);
+	alSourcePlay(estado.source[0]);
 }

@@ -54,19 +54,14 @@ void reset()
 void saltar()
 {
 	gordon.andar=GL_FALSE;
-	ny=gordon.objecto.pos.y+velocidade*10;
-	if(!detectaColisao(nx,ny - 0.01))
+	ny=gordon.objecto.pos.y+gravidade*10;
+
+	if(!detectaColisao(nx,ny - 0.01) &&
+		gordon.objecto.pos.y < yInicial + 4 && 
+		(gordon.objecto.pos.y < yInicial + 2 || estado.teclas.x))
 	{
-		if(gordon.objecto.pos.y < yInicial + 4)
-		{
-			gordon.objecto.pos.y=ny;
-			gordon.saltar=GL_TRUE; 
-		}
-		else
-		{
-			gordon.saltar=GL_FALSE;
-			gordon.cair=GL_TRUE;
-		}
+		gordon.objecto.pos.y=ny;
+		gordon.saltar=GL_TRUE; 
 	}
 	else
 	{
@@ -274,7 +269,7 @@ void setAnimacoes()
 	}
 
 
-	if(gordon.correr && gordon.stdModel[JANELA_NAVIGATE].GetSequence()!=3)
+	if(gordon.correr && !gordon.saltar && gordon.stdModel[JANELA_NAVIGATE].GetSequence()!=3)
 	{
 		gordon.stdModel[JANELA_NAVIGATE].SetSequence(3);
 		gordon.stdModel[JANELA_TOP].SetSequence(3);
@@ -425,6 +420,11 @@ void fim()
 
 void Timer(int value)
 {
+	if(gordon.correr)
+		printf("O gordon ta a correr\n");
+	else
+		printf("O gordon nao ta a correr\n");
+
 	GLuint curr = glutGet(GLUT_ELAPSED_TIME);
 	crabsColisoes(curr);
 
@@ -454,7 +454,7 @@ void Timer(int value)
 	if(gordon.cair)
 		reset();
 
-	if(estado.teclas.x && !gordon.saltar /*&& !gordon.cair*/)
+	if(estado.teclas.x && !gordon.saltar && !gordon.cair)
 	{
 		yInicial=gordon.objecto.pos.y;
 		alSourcePlay(estado.source[1]);
@@ -477,9 +477,10 @@ void Timer(int value)
 		gordon.correr=GL_TRUE;
 	}
 	else
-		gordon.correr=GL_FALSE;
+		if(!gordon.saltar && !gordon.cair)
+			gordon.correr=GL_FALSE;
 
-	if(!estado.teclas.right && !estado.teclas.left)
+	if(!estado.teclas.right && !estado.teclas.left && !gordon.saltar && !gordon.cair)
 	{
 		gordon.andar=GL_FALSE;
 		gordon.correr=GL_FALSE;
