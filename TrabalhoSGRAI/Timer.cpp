@@ -21,8 +21,23 @@ GLfloat nx,ny;
 float velocidade;
 float gravidade;
 GLfloat yInicial=0;
-int plat1 [140] = {0,0,1,0,0,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,1,0,0,1,0,1,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-int plat2 [140] = {0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+int plat1 [140] = {0,0,1,0,0,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,2,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,1,0,0,1,0,1,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,3,3,0,0,3,3,0,0,0,0,0,0,0,0,0,3,3,3,0,0,3,3,0,0,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,3,3,3,3,0,0,0,0,0};
+int plat2 [140] = {0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,1,1,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+int pipe[140] = {0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,2,0,0,0,0,0,3,0,0,0,0,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,4,4,4,0,0,4,4,4,4,0,0,0,0,0,4,4,4,4,4,0,0,4,4,4,4,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,4,4,4,4,4,4,0,0,0,0,0};
+int esc[140] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2,3,4,0,0,4,3,2,1,0,0,0,0,0,1,2,3,4,99,0,0,4,3,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2,3,4,5,88,0,0,0,0,0};
+int chao [140] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+
+void reset()
+{
+	ny=gordon.objecto.pos.y;
+
+	if(ny < -4.0)
+	{
+		gordon.objecto.pos.x = 0;
+		gordon.objecto.pos.y = 0;
+		gordon.cair=GL_FALSE;
+	}
+}
 
 void saltar()
 {
@@ -65,49 +80,127 @@ void cair()
 
 }
 
-void verificacimaplataforma1()
+void verific()
 {
-	float nxesq = gordon.objecto.pos.x;
-	float nxdir = gordon.objecto.pos.x;
+	nx=gordon.objecto.pos.x;
 	ny=gordon.objecto.pos.y;
 
-	if(ny > 2.8 && ny < 3.3)
+	int x = floor(nx+0.5);
+
+	if((ny > -0.5 && ny < 0.5))
 	{
-		printf("nx:%f-ny:%f\n",nx,ny);
-		if(plat1[(int)nxesq-1]==0 || plat1[(int)nxdir+1]==0)
+		if(chao[x]==1 && !detectaColisao(nx,ny))
 		{
-			gordon.objecto.pos.y=ny;
 			gordon.cair=GL_TRUE;
 		}
-		else
+	}
+}
+
+void verificimacaesdaca()
+{
+	nx=gordon.objecto.pos.x;
+	ny=gordon.objecto.pos.y;
+
+	int x = floor(nx+0.5);
+
+	if((ny > 0.8 && ny < 1.3))
+	{
+		if((esc[x+1]==1 && !detectaColisao(nx,ny)) || (esc[x-1]==1 && !detectaColisao(nx,ny)))
 		{
-			gordon.cair=GL_FALSE;
+			gordon.cair=GL_TRUE;
+		}
+	}
+	else if((ny > 1.8 && ny < 2.3))
+	{
+		if((esc[x+1]==2 && !detectaColisao(nx,ny)) || (esc[x-1]==2 && !detectaColisao(nx,ny)))
+		{
+			gordon.cair=GL_TRUE;
+		}
+	}
+	else if((ny > 2.8 && ny < 3.3))
+	{
+		if((esc[x+1]==3 && !detectaColisao(nx,ny)) || (esc[x-1]==3 && !detectaColisao(nx,ny)))
+		{
+			gordon.cair=GL_TRUE;
+		}
+	}
+	else if((ny > 3.8 && ny < 4.3))
+	{
+		if((esc[x+1]==4 && !detectaColisao(nx,ny)) || ((esc[x-1]==4 && esc[x]!=99 && !detectaColisao(nx,ny))))
+		{
+			gordon.cair=GL_TRUE;
+		}
+	}
+	else if((ny > 4.8 && ny < 5.3))
+	{
+		if((esc[x+1]==5 && !detectaColisao(nx,ny)) || ((esc[x-1]==5 && esc[x]!=88 && !detectaColisao(nx,ny))))
+		{
+			gordon.cair=GL_TRUE;
+		}
+	}
+	if((ny > 3.8 && ny < 4.3))
+	{
+		if(esc[x-1]==99 && !detectaColisao(nx,ny))
+		{
+			gordon.cair=GL_TRUE;
+		}
+	}
+	if((ny > 4.8 && ny < 5.3))
+	{
+		if(esc[x-1]==88 && !detectaColisao(nx,ny))
+		{
+			gordon.cair=GL_TRUE;
+		}
+	}
+}
+
+void verificacimapipe()
+{
+	nx=gordon.objecto.pos.x;
+	ny=gordon.objecto.pos.y;
+
+	int x = floor(nx+0.5);
+	
+	if((ny > 0.8 && ny < 1.3) || (ny > 1.8 && ny < 2.3))
+	{
+		if(pipe[x]==0 && !detectaColisao(nx,ny))
+		{
+			gordon.cair=GL_TRUE;
 		}
 	}
 }
 
 void verificacimaplataforma2()
 {
-	float nxesq = gordon.objecto.pos.x;
-	float nxdir = gordon.objecto.pos.x;
+	nx=gordon.objecto.pos.x;
 	ny=gordon.objecto.pos.y;
 
-	if(ny > 2.8 && ny < 3.3)
+	int x = floor(nx+0.5);
+
+	if(ny > 5.8 && ny < 6.3)
 	{
-		printf("nx:%f-ny:%f\n",nx,ny);
-		if(plat2[(int)nxesq-1]==0 || plat2[(int)nxdir+1]==0)
+		if(plat2[x]==0 && !detectaColisao(nx,ny))
 		{
-			gordon.objecto.pos.y=ny;
 			gordon.cair=GL_TRUE;
-		}
-		else
-		{
-			gordon.cair=GL_FALSE;
 		}
 	}
 }
 
+void verificacimaplataforma1()
+{
+	nx=gordon.objecto.pos.x;
+	ny=gordon.objecto.pos.y;
 
+	int x = floor(nx+0.5);
+
+	if(ny > 2.8 && ny < 3.3)
+	{
+		if(plat1[x]==0 && !detectaColisao(nx,ny))
+		{
+			gordon.cair=GL_TRUE;
+		}
+	}
+}
 
 void virarFrente()
 {
@@ -270,16 +363,21 @@ void Timer(int value)
 
 	if(gordon.saltar)
 		saltar();
-	else
-		if(verificaChao() && gordon.cair)
+	else if(verificaChao() && gordon.cair)
 			cair();
 		else
+		{
 			verificacimaplataforma1();
-
-	/*verificacimaplataforma2();*/
+			verificacimaplataforma2();
+			verificacimapipe();
+			verificimacaesdaca();
+			verific();
+		}
 		
+	if(gordon.cair)
+		reset();
 
-	if(estado.teclas.x && !gordon.saltar && !gordon.cair)
+	if(estado.teclas.x && !gordon.saltar /*&& !gordon.cair*/)
 	{
 		yInicial=gordon.objecto.pos.y;
 		alSourcePlay(estado.source[1]);

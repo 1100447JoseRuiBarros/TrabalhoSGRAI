@@ -1,4 +1,4 @@
-﻿Build started 11-01-2014 23:28:37.
+﻿Build started 12-01-2014 12:25:28.
      1>Project "C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\TrabalhoSGRAI\TrabalhoSGRAI.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 12 Express\VC\bin\CL.exe /c /I"C:\Program Files (x86)\OpenAL 1.1 SDK\include" /I"C:\Program Files (x86)\freealut-1.1.0-bin\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _CRT_SECURE_NO_WARNINGS /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Timer.cpp
