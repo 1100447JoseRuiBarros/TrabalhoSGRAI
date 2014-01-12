@@ -154,9 +154,14 @@ int main(int argc, char **argv)
 	alutInit (&argc, argv);
 	estado.buffer[0] = alutCreateBufferFromFile("mario.wav");
 	estado.buffer[1] = alutCreateBufferFromFile("jump.wav");
+	estado.buffer[2] = alutCreateBufferFromFile("dead.wav");
+	estado.buffer[3] = alutCreateBufferFromFile("win.wav");
 	alGenSources(4, estado.source);
 	alSourcei(estado.source[0], AL_BUFFER, estado.buffer[0]);
 	alSourcei(estado.source[1], AL_BUFFER, estado.buffer[1]);
+	alSourcei(estado.source[2], AL_BUFFER, estado.buffer[2]);
+	alSourcei(estado.source[3], AL_BUFFER, estado.buffer[3]);
+	alSourcei (estado.source[0], AL_LOOPING,  AL_TRUE  );
 	alSourcePlay(estado.source[0]);
 
 	glutMainLoop();

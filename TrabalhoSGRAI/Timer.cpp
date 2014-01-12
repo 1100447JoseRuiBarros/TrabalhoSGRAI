@@ -33,6 +33,8 @@ void reset()
 
 	if(ny < -4.0)
 	{
+		alSourceStop(estado.source[0]);
+		alSourcePlay(estado.source[2]);
 		MessageBox(NULL,"Perdeu. Comece de novo.","FIM", MB_OK | MB_ICONEXCLAMATION);
 		gordon.objecto.pos.x = 0;
 		gordon.objecto.pos.y = 0;
@@ -44,6 +46,8 @@ void reset()
 		estado.teclas.up = GL_FALSE;
 		estado.teclas.x = GL_FALSE;
 		estado.teclas.z = GL_FALSE;
+		alSourceStop(estado.source[2]);
+		alSourcePlay(estado.source[0]);
 	}
 }
 
@@ -375,6 +379,9 @@ void verificacrabs()
 
 			if(nxint == hnint)
 			{
+				alSourceStop(estado.source[0]);
+				alSourcePlay(estado.source[2]);
+				MessageBox(NULL,"Perdeu. Comece de novo.","FIM", MB_OK | MB_ICONEXCLAMATION);
 				gordon.objecto.pos.x = 0;
 				gordon.objecto.pos.y = 0;
 				gordon.saltar = GL_FALSE;
@@ -385,6 +392,8 @@ void verificacrabs()
 				estado.teclas.up = GL_FALSE;
 				estado.teclas.x = GL_FALSE;
 				estado.teclas.z = GL_FALSE;
+				alSourceStop(estado.source[2]);
+				alSourcePlay(estado.source[0]);
 			}
 		}
 	}
@@ -396,6 +405,8 @@ void fim()
 
 	if((int)nx == 136)
 	{
+		alSourceStop(estado.source[0]);
+		alSourcePlay(estado.source[3]);
 		MessageBox(NULL,"Parabens ganhou o jogo!","FIM", MB_OK | MB_ICONEXCLAMATION);
 		gordon.objecto.pos.x = 0;
 		gordon.objecto.pos.y = 0;
@@ -407,6 +418,8 @@ void fim()
 		estado.teclas.up = GL_FALSE;
 		estado.teclas.x = GL_FALSE;
 		estado.teclas.z = GL_FALSE;
+		alSourceStop(estado.source[3]);
+		alSourcePlay(estado.source[0]);
 	}
 }
 
