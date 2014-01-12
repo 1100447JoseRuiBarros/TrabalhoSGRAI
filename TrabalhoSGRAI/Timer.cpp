@@ -49,7 +49,7 @@ void reset()
 
 void saltar()
 {
-
+	gordon.andar=GL_FALSE;
 	ny=gordon.objecto.pos.y+velocidade*10;
 	if(!detectaColisao(nx,ny - 0.01))
 	{
@@ -73,7 +73,7 @@ void saltar()
 
 void cair()
 {
-
+	gordon.andar=GL_FALSE;
 	ny=gordon.objecto.pos.y-gravidade*10;
 	if(!detectaColisao(nx,ny - 0.01))
 	{
@@ -168,7 +168,7 @@ void verificacimapipe()
 	ny=gordon.objecto.pos.y;
 
 	int x = floor(nx+0.5);
-	
+
 	if((ny > 0.8 && ny < 1.3) || (ny > 1.8 && ny < 2.3))
 	{
 		if(pipe[x]==0 && !detectaColisao(nx,ny))
@@ -223,7 +223,8 @@ void virarFrente()
 	if(!detectaColisao(nx - 0.05,ny))
 	{
 		gordon.objecto.pos.x=nx;
-		gordon.andar=GL_TRUE; 
+		if(!gordon.cair && !gordon.saltar)
+			gordon.andar=GL_TRUE; 
 	}
 	/*else*/
 	//printf("Colidiu a andar para a direita lolololololol!\n");
@@ -244,26 +245,28 @@ void virarTras()
 	{
 
 		gordon.objecto.pos.x=nx;
-		gordon.andar=GL_TRUE;
+		if(!gordon.cair && !gordon.saltar)
+			gordon.andar=GL_TRUE;
 	}
 }			
 
 void setAnimacoes()
 {
-	if((gordon.cair || gordon.saltar) && gordon.stdModel[JANELA_NAVIGATE].GetSequence()!=0 )
-	{
-			gordon.stdModel[JANELA_NAVIGATE].SetSequence(0);
-			gordon.stdModel[JANELA_TOP].SetSequence(0);
-			return;
-	}
+	//if((gordon.cair /*|| gordon.saltar*/) && gordon.stdModel[JANELA_NAVIGATE].GetSequence()!=0 )
+	//{
+	//	gordon.stdModel[JANELA_NAVIGATE].SetSequence(0);
+	//	gordon.stdModel[JANELA_TOP].SetSequence(0);
+	//	return;
+	//}
 
 
-	if(( (!gordon.andar && !gordon.correr) ) 
+	if(( (!gordon.andar && !gordon.correr && !gordon.saltar) || gordon.cair) 
 		&& gordon.stdModel[JANELA_NAVIGATE].GetSequence() != 0)
 	{
-			gordon.stdModel[JANELA_NAVIGATE].SetSequence(0);
-			gordon.stdModel[JANELA_TOP].SetSequence(0);
-			return;
+		gordon.stdModel[JANELA_NAVIGATE].SetSequence(0);
+		gordon.stdModel[JANELA_TOP].SetSequence(0);
+		printf("Animação idle\n");
+		return;
 	}
 
 
@@ -271,6 +274,7 @@ void setAnimacoes()
 	{
 		gordon.stdModel[JANELA_NAVIGATE].SetSequence(3);
 		gordon.stdModel[JANELA_TOP].SetSequence(3);
+		printf("Animação correr\n");
 		return;
 	}
 
@@ -278,6 +282,7 @@ void setAnimacoes()
 	{
 		gordon.stdModel[JANELA_NAVIGATE].SetSequence(4);
 		gordon.stdModel[JANELA_TOP].SetSequence(4);
+		printf("Animação andar\n");
 		return;
 	}
 
@@ -285,6 +290,7 @@ void setAnimacoes()
 	{
 		gordon.stdModel[JANELA_NAVIGATE].SetSequence(8);
 		gordon.stdModel[JANELA_TOP].SetSequence(8);
+		printf("Animação saltar\n");
 		return;
 	}
 }
@@ -422,16 +428,16 @@ void Timer(int value)
 	if(gordon.saltar)
 		saltar();
 	else if(verificaChao() && gordon.cair)
-			cair();
-		else
-		{
-			verificacimaplataforma1();
-			verificacimaplataforma2();
-			verificacimapipe();
-			verificimacaesdaca();
-			verific();
-		}
-		
+		cair();
+	else
+	{
+		verificacimaplataforma1();
+		verificacimaplataforma2();
+		verificacimapipe();
+		verificimacaesdaca();
+		verific();
+	}
+
 	if(gordon.cair)
 		reset();
 
@@ -468,7 +474,7 @@ void Timer(int value)
 
 	/*if(!verificaChaoParado())
 	{
-		gordon.cair = GL_TRUE;
+	gordon.cair = GL_TRUE;
 	}*/
 
 	verificacrabs();

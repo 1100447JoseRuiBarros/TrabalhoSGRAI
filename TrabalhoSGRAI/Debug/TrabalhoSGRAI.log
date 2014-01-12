@@ -1,10 +1,15 @@
+<<<<<<< HEAD
 ﻿Build started 12-01-2014 13:33:58.
      1>Project "C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\TrabalhoSGRAI\TrabalhoSGRAI.vcxproj" on node 2 (Build target(s)).
+=======
+﻿Build started 12-01-2014 13:26:21.
+     1>Project "C:\Users\Barros\Documents\TrabalhoSGRAI\TrabalhoSGRAI\TrabalhoSGRAI.vcxproj" on node 2 (Build target(s)).
+>>>>>>> 4e18e7344d4edc0e70c3764b540c638be43b53b4
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12 Express\VC\bin\CL.exe /c /I"C:\Program Files (x86)\OpenAL 1.1 SDK\include" /I"C:\Program Files (x86)\freealut-1.1.0-bin\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _CRT_SECURE_NO_WARNINGS /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Timer.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"C:\Program Files (x86)\OpenAL 1.1 SDK\include" /I"C:\Program Files (x86)\freealut-1.1.0-bin\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _CRT_SECURE_NO_WARNINGS /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Timer.cpp
          Timer.cpp
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12 Express\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\Debug\TrabalhoSGRAI.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Program Files (x86)\OpenAL 1.1 SDK\libs\Win32" /LIBPATH:"C:\Program Files (x86)\freealut-1.1.0-bin\lib" alut.lib OpenAL32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\Debug\TrabalhoSGRAI.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\Debug\TrabalhoSGRAI.lib" /MACHINE:X86 Debug\Camera.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Barros\Documents\TrabalhoSGRAI\Debug\TrabalhoSGRAI.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Program Files (x86)\OpenAL 1.1 SDK\libs\Win32" /LIBPATH:"C:\Program Files (x86)\freealut-1.1.0-bin\lib" alut.lib OpenAL32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Barros\Documents\TrabalhoSGRAI\Debug\TrabalhoSGRAI.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Barros\Documents\TrabalhoSGRAI\Debug\TrabalhoSGRAI.lib" /MACHINE:X86 Debug\Camera.obj
          Debug\Colisao.obj
          Debug\Globals.obj
          Debug\Illumination.obj
@@ -24,9 +29,13 @@
          Debug\Window.obj
          GlAux.Lib
          libjpeg.lib
-         TrabalhoSGRAI.vcxproj -> C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\Debug\TrabalhoSGRAI.exe
-     1>Done Building Project "C:\Users\Andre\Desktop\Repositorio\TrabalhoSGRAI\TrabalhoSGRAI\TrabalhoSGRAI.vcxproj" (Build target(s)).
+         TrabalhoSGRAI.vcxproj -> C:\Users\Barros\Documents\TrabalhoSGRAI\Debug\TrabalhoSGRAI.exe
+     1>Done Building Project "C:\Users\Barros\Documents\TrabalhoSGRAI\TrabalhoSGRAI\TrabalhoSGRAI.vcxproj" (Build target(s)).
 
 Build succeeded.
 
+<<<<<<< HEAD
 Time Elapsed 00:00:02.69
+=======
+Time Elapsed 00:00:02.44
+>>>>>>> 4e18e7344d4edc0e70c3764b540c638be43b53b4
