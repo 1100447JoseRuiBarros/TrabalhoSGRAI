@@ -260,12 +260,12 @@ void setAnimacoes()
 	//}
 
 
-	if(( (!gordon.andar && !gordon.correr && !gordon.saltar) || gordon.cair) 
-		&& gordon.stdModel[JANELA_NAVIGATE].GetSequence() != 0)
+	if( (!gordon.andar && !gordon.correr && !gordon.saltar) || (gordon.cair && gordon.andar) || 
+		(gordon.cair && gordon.correr) || gordon.cair && gordon.stdModel[JANELA_NAVIGATE].GetSequence() != 0)
 	{
 		gordon.stdModel[JANELA_NAVIGATE].SetSequence(0);
 		gordon.stdModel[JANELA_TOP].SetSequence(0);
-		printf("Animação idle\n");
+		//printf("Animação idle\n");
 		return;
 	}
 
@@ -274,7 +274,7 @@ void setAnimacoes()
 	{
 		gordon.stdModel[JANELA_NAVIGATE].SetSequence(3);
 		gordon.stdModel[JANELA_TOP].SetSequence(3);
-		printf("Animação correr\n");
+		//printf("Animação correr\n");
 		return;
 	}
 
@@ -282,7 +282,7 @@ void setAnimacoes()
 	{
 		gordon.stdModel[JANELA_NAVIGATE].SetSequence(4);
 		gordon.stdModel[JANELA_TOP].SetSequence(4);
-		printf("Animação andar\n");
+		//printf("Animação andar\n");
 		return;
 	}
 
@@ -290,7 +290,7 @@ void setAnimacoes()
 	{
 		gordon.stdModel[JANELA_NAVIGATE].SetSequence(8);
 		gordon.stdModel[JANELA_TOP].SetSequence(8);
-		printf("Animação saltar\n");
+		//printf("Animação saltar\n");
 		return;
 	}
 }
@@ -370,8 +370,8 @@ void verificacrabs()
 		for(int i=0; i< 3; i++)
 		{
 			GLfloat hx = headCrabs[i].objecto.pos.x;
-			int nxint = floor(nx+0.5);
-			int hnint = floor(hx+0.5);
+			int nxint = floor(nx);
+			int hnint = floor(hx);
 
 			if(nxint == hnint)
 			{
