@@ -47,6 +47,11 @@ void Key(unsigned char key, int x, int y)
 		glEnable(GL_TEXTURE_2D);
 		glutSetWindow(estado.topSubwindow);
 		glEnable(GL_TEXTURE_2D);
+		break;
+	case 'r':
+	case 'R':
+		restart();
+		break;
 	}
 }
 

@@ -192,3 +192,17 @@ void displayMainWindow()
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);	
 	glutSwapBuffers();
 }
+
+void restart()
+{
+	gordon.objecto.pos.x = 0;
+	gordon.objecto.pos.y = 0;
+	gordon.saltar=GL_FALSE;
+	gordon.cair = GL_FALSE;
+	estado.teclas.down = GL_FALSE;
+	estado.teclas.left = GL_FALSE;
+	estado.teclas.right = GL_FALSE;
+	estado.teclas.up = GL_FALSE;
+	estado.teclas.x = GL_FALSE;
+	estado.teclas.z = GL_FALSE;
+}

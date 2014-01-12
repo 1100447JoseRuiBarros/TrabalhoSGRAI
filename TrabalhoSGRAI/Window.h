@@ -7,3 +7,4 @@ void displayNavigateSubwindow();
 void displayTopSubwindow();
 void redisplayAll(void);
 void displayMainWindow();
+void restart();

@@ -33,9 +33,17 @@ void reset()
 
 	if(ny < -4.0)
 	{
+		MessageBox(NULL,"Perdeu. Comece de novo.","FIM", MB_OK | MB_ICONEXCLAMATION);
 		gordon.objecto.pos.x = 0;
 		gordon.objecto.pos.y = 0;
-		gordon.cair=GL_FALSE;
+		gordon.saltar = GL_FALSE;
+		gordon.cair = GL_FALSE;
+		estado.teclas.down = GL_FALSE;
+		estado.teclas.left = GL_FALSE;
+		estado.teclas.right = GL_FALSE;
+		estado.teclas.up = GL_FALSE;
+		estado.teclas.x = GL_FALSE;
+		estado.teclas.z = GL_FALSE;
 	}
 }
 
@@ -87,7 +95,7 @@ void verific()
 
 	int x = floor(nx+0.5);
 
-	if((ny > -0.5 && ny < 0.5))
+	if(ny > -0.5 && ny < 0.5)
 	{
 		if(chao[x]==1 && !detectaColisao(nx,ny))
 		{
@@ -346,6 +354,56 @@ void crabsColisoes(GLuint curr)
 	}
 }
 
+void verificacrabs()
+{
+	nx=gordon.objecto.pos.x;
+	ny=gordon.objecto.pos.y;
+
+	if(ny > -0.5 && ny < 0.5)
+	{
+		for(int i=0; i< 3; i++)
+		{
+			GLfloat hx = headCrabs[i].objecto.pos.x;
+			int nxint = floor(nx+0.5);
+			int hnint = floor(hx+0.5);
+
+			if(nxint == hnint)
+			{
+				gordon.objecto.pos.x = 0;
+				gordon.objecto.pos.y = 0;
+				gordon.saltar = GL_FALSE;
+				gordon.cair = GL_FALSE;
+				estado.teclas.down = GL_FALSE;
+				estado.teclas.left = GL_FALSE;
+				estado.teclas.right = GL_FALSE;
+				estado.teclas.up = GL_FALSE;
+				estado.teclas.x = GL_FALSE;
+				estado.teclas.z = GL_FALSE;
+			}
+		}
+	}
+}
+
+void fim()
+{
+	nx=gordon.objecto.pos.x;
+
+	if((int)nx == 136)
+	{
+		MessageBox(NULL,"Parabens ganhou o jogo!","FIM", MB_OK | MB_ICONEXCLAMATION);
+		gordon.objecto.pos.x = 0;
+		gordon.objecto.pos.y = 0;
+		gordon.saltar = GL_FALSE;
+		gordon.cair = GL_FALSE;
+		estado.teclas.down = GL_FALSE;
+		estado.teclas.left = GL_FALSE;
+		estado.teclas.right = GL_FALSE;
+		estado.teclas.up = GL_FALSE;
+		estado.teclas.x = GL_FALSE;
+		estado.teclas.z = GL_FALSE;
+	}
+}
+
 void Timer(int value)
 {
 	GLuint curr = glutGet(GLUT_ELAPSED_TIME);
@@ -412,6 +470,10 @@ void Timer(int value)
 	{
 		gordon.cair = GL_TRUE;
 	}*/
+
+	verificacrabs();
+
+	fim();
 
 	setAnimacoes();
 
